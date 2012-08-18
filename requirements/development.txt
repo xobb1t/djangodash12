@@ -1,6 +1,5 @@
 -r common.txt
 
-Pillow==1.7.7
 django-debug-toolbar==0.9.4
 ipython==0.13
 gondor==1.1.3
