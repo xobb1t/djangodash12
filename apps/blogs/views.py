@@ -40,7 +40,7 @@ def oauth2callback(request):
         identificator=blog_info['id'], defaults=defaults
     )
     request.session['blog_source'] = source
-    return HttpResponse()
+    return redirect('home')
 
 
 def authorization_failed(request):

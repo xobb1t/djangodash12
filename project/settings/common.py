@@ -171,7 +171,7 @@ GOOGLE_SECRET = os.environ.get('GOOGLE_SECRET', '')
 GOOGLE_SCOPES = (
     'https://www.googleapis.com/auth/userinfo.profile',
     'https://www.googleapis.com/auth/userinfo.email',
-    'https://www.googleapis.com/auth/blogger',
+    'https://www.googleapis.com/auth/blogger.readonly',
 )
 GOOGLE_AUTH_URL = 'https://accounts.google.com/o/oauth2/auth'
 GOOGLE_TOKEN_URL = 'https://accounts.google.com/o/oauth2/token'
