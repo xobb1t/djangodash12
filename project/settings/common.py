@@ -155,3 +155,4 @@ GITHUB_SECRET = os.environ.get('GITHUB_SECRET', '')
 GITHUB_SCOPES = ('user', 'public_repo',)
 GITHUB_AUTH_HOST = 'https://github.com'
 GITHUB_API_HOST = 'https://api.github.com'
+GITHUB_CALLBACK_URL = 'http://lz367.o1.gondor.io/repositories/github_auth/'
