@@ -40,8 +40,7 @@ class Blog(models.Model):
 
     source = models.ForeignKey(Source, related_name='blogs')
     domain = models.CharField(max_length=255)
-    default_domain = models.CharField(max_length=255)
     identificator = models.CharField(max_length=255)
 
     def __unicode__(self):
-        return self.domain or self.default_domain
+        return self.domain
