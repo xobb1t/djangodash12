@@ -1,3 +1,5 @@
 $(document).ready(function(){
-  $('.js-popover').popover();
+  $('.js-popover').popover({
+    placement: 'top'
+  })
 });
