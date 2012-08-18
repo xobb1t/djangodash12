@@ -58,8 +58,8 @@ def save_repo(request):
         )
         request.session['repo'] = obj
         request.session.modified = True
+        return render(request, 'repositories/repository_saved.html')
 
-    return render(request, 'repositories/save_repo.html', {
-        'repo_form': form,
-        'form_valid': form_valid
+    return render(request, 'repositories/repository_form.html', {
+        'form': form,
     })
