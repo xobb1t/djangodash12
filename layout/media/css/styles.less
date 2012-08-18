@@ -1,0 +1,230 @@
+/*LESS*/
+@bg: #334443;
+@bgimg: url('../images/grid.png');
+@color: #ddd;
+@bordercolor: #415857;
+@fonr1: Oregano, Arial,Helvetica,sans-serif;
+@fonr2: Simonetta, Arial,Helvetica,sans-serif;
+@fonr3: 'Ubuntu Mono', Arial,Helvetica,sans-serif;
+@fonr4: 'Advent Pro', Arial,Helvetica,sans-serif;
+@fonr5: 'Cantora One', Arial,Helvetica,sans-serif;
+
+
+/*base*/
+body {
+  background: @bg @bgimg repeat 0 0;
+}
+input,
+textarea,
+body {
+  color: @color;
+  font-size: 12px;
+  font-family: Arial, 'Helvetica CY', 'Nimbus Sans L', sans-serif;
+}
+/*layout*/
+.l-page { 
+  overflow: hidden;
+  margin: 0 auto; 
+  min-height: 100%;
+}
+.l-container {
+  margin: 0 auto; 
+  width: 980px;
+}
+.l-page_index {
+  min-height: 451px;
+}
+.l-page_index .l-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: -225px 0 0 -490px;
+}
+.l-header,
+.l-content {
+  position: relative;
+  overflow: hidden;
+}
+.l-header {
+}
+/*blocks*/
+
+.b-header .col {
+  position: relative;
+  height: 250px;
+}
+.b-header .pelican-logo {
+  text-align: center;
+}
+.b-header .help-text {
+  padding-top: 185px;
+  font-size: 20px;
+  font-family: @fonr4;
+}
+.b-header .help-text .arrow {
+  display: inline-block;
+  margin-top: 10px;
+  width: 19px;
+  height: 27px;
+  background: url('../images/sprite.png') no-repeat -253px 0;
+}
+.b-index .col {
+  min-height: 100px;
+  border-bottom: none;
+}
+.b-text {
+  font-size: 15px;
+  font-family: @fonr4; 
+  /*font-family: Tahoma, 'Geneva CY', sans-serif;*/
+}
+.b-icon {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  background: url('../images/sprite.png') no-repeat 0 0;
+}
+.b-icon_tumblr {
+  background-position: -32px 0;
+}
+.b-icon_press {
+  background-position: -64px 0;
+}
+.b-icon_github {
+  background-position: -96px 0;
+  width: 152px;
+  height: 50px;
+}
+.b-icon.disabled {
+  opacity: 0.5;
+  -moz-opacity: 0.5;
+  filter: alpha(opacity=5);
+}
+
+.popover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1010;
+  display: none;
+  padding: 5px;
+}
+.popover.top {
+  margin-top: -5px;
+}
+.popover.right {
+  margin-left: 5px;
+}
+.popover.bottom {
+  margin-top: 5px;
+}
+.popover.left {
+  margin-left: -5px;
+}
+.popover.top .arrow {
+  bottom: 0;
+  left: 50%;
+  margin-left: -5px;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #000000;
+}
+.popover.right .arrow {
+  top: 50%;
+  left: 0;
+  margin-top: -5px;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-right: 5px solid #000000;
+}
+.popover.bottom .arrow {
+  top: 0;
+  left: 50%;
+  margin-left: -5px;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid #000000;
+}
+.popover.left .arrow {
+  top: 50%;
+  right: 0;
+  margin-top: -5px;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid #000000;
+}
+.popover .arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+.popover-inner {
+  padding: 3px;
+  width: 280px;
+  overflow: hidden;
+  background: #000000;
+  background: rgba(0, 0, 0, 0.8);
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+}
+.popover-title {
+  padding: 9px 15px;
+  line-height: 1;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #eee;
+  -webkit-border-radius: 3px 3px 0 0;
+  -moz-border-radius: 3px 3px 0 0;
+  border-radius: 3px 3px 0 0;
+}
+.popover-content {
+  padding: 14px;
+  background-color: #ffffff;
+  -webkit-border-radius: 0 0 3px 3px;
+  -moz-border-radius: 0 0 3px 3px;
+  border-radius: 0 0 3px 3px;
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding-box;
+  background-clip: padding-box;
+}
+.popover-content p,
+.popover-content ul,
+.popover-content ol {
+  margin-bottom: 0;
+}
+
+/*global*/
+.align-center {
+  text-align: center;
+}
+.align-left {
+  text-align: left;
+}
+.align-right {
+  text-align: right;
+}
+.col-l,
+.col-c,
+.col-r {
+  float: left;
+  width: 430px;
+  padding: 25px;
+  border-bottom: 1px dashed @bordercolor;
+
+}
+.col-l,
+.col-r {
+  width: 189px;
+}
+.col-l {
+  margin-left: 10px;
+  border-right: 1px dashed @bordercolor;
+}
+.col-r {
+  border-left: 1px dashed @bordercolor; 
+}
+.col:hover {
+   background-color: rgba(41,41,41, 0.1);
+}
