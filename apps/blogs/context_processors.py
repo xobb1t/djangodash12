@@ -1,5 +1,7 @@
 import urllib
+
 from django.conf import settings
+from django.utils.functional import SimpleLazyObject
 
 
 def google_auth_url(request):
@@ -14,3 +16,9 @@ def google_auth_url(request):
     query_string = urllib.urlencode(data)
     auth_url = '{0}?{1}'.format(settings.GOOGLE_AUTH_URL, query_string)
     return {'google_auth_url': auth_url}
+
+
+def blog_source(request):
+    def get_blog_source():
+        return request.session.get('blog_source', None)
+    return {'blog_source': SimpleLazyObject(get_blog_source)}

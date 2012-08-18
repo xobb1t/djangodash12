@@ -87,6 +87,7 @@ TEMPLATE_CONTEXT_PROCESSORS = [
     "django.core.context_processors.static",
     "django.contrib.messages.context_processors.messages",
     "blogs.context_processors.google_auth_url",
+    "blogs.context_processors.blog_source",
     "repositories.context_processors.github_auth_url",
     "repositories.context_processors.github_user",
 ]
@@ -169,6 +170,7 @@ GOOGLE_ID = os.environ.get('GOOGLE_ID', '')
 GOOGLE_SECRET = os.environ.get('GOOGLE_SECRET', '')
 GOOGLE_SCOPES = (
     'https://www.googleapis.com/auth/userinfo.profile',
+    'https://www.googleapis.com/auth/userinfo.email',
     'https://www.googleapis.com/auth/blogger',
 )
 GOOGLE_AUTH_URL = 'https://accounts.google.com/o/oauth2/auth'

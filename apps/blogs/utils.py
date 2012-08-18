@@ -24,11 +24,10 @@ def get_tokens(code):
     raise AuthError
 
 
-def blogger_resource(resource, access_token):
+def api_resource(root, resource, access_token):
     url = '{0}{1}?access_token={2}'.format(
-        settings.BLOGGER_API_ROOT, resource, access_token
+        root, resource, access_token
     )
-    print url
     r = requests.get(url)
     if r.status_code == 200:
         data = json.loads(r.content)
