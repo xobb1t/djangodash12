@@ -147,3 +147,6 @@ LOGGING = {
 FIXTURE_DIRS = [
     os.path.join(PACKAGE_ROOT, "fixtures"),
 ]
+
+GITHUB_ID = os.environ.get('GITHUB_ID', '')
+GITHUB_SECRET = os.environ.get('GITHUB_SECRET', '')
