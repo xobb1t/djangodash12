@@ -10,13 +10,14 @@
 
 <p><b>Blogger account</b></p>
 {% if blog_source and not blog_source.is_expired %}
-    <ul>
-      <li>Username: {{ blog_source.username }}</li>
-      <li>ID: {{ blog_source.identificator }}</li>
-      {% if blog_form %}
-      <li>Choose blog: {{ blog_form.blog }}</li>
-      {% endif %}
-    </ul>
+    <form action="{% url 'blogs_blog_add' %}" method="POST">
+    {% csrf_token %}
+      <ul>
+        <li>Username: {{ blog_source.username }}</li>
+        <li>ID: {{ blog_source.identificator }}</li>
+          <li>Choose blog: {{ blog_form.blog }}<input type="submit"></li>
+      </ul>
+    </form>
 {% else %}
     <a href="{{ google_auth_url }}">Enter to Google</a>
 {% endif %}

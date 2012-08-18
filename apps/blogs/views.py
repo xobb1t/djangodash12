@@ -1,11 +1,13 @@
-from datetime import datetime, timedelta
 import requests
+
+from datetime import datetime, timedelta
 
 from django.conf import settings
 from django.contrib import messages
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from django.shortcuts import redirect, render
 
+from .forms import BlogForm
 from .models import Source
 from .utils import get_tokens, AuthError, api_resource
 
@@ -42,6 +44,19 @@ def oauth2callback(request):
     )
     request.session['blog_source'] = source
     return redirect('home')
+
+
+def blog_form(request):
+    blog_source = request.session.get('blog_source')
+    if not blog_source or blog_source.is_expired:
+        raise Http404
+    form = BlogForm(blog_source=blog_source, data=request.POST)
+    if form.is_valid():
+        blog = form.save()
+        if blog is not None:
+            request.session['blog'] = blog
+        return HttpResponse(blog.default_domain)
+    return Http404
 
 
 def authorization_failed(request):

@@ -18,5 +18,5 @@ def github_auth_url(request):
 
 def github_user(request):
     def get_github_user():
-        return request.session.get('repositories_user', None)
+        return request.session.get('repo_user', None)
     return {'github_user': SimpleLazyObject(get_github_user)}
