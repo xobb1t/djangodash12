@@ -158,3 +158,13 @@ GITHUB_AUTH_HOST = 'https://github.com'
 GITHUB_AUTH_PATH = '/login/oauth/authorize'
 GITHUB_API_HOST = 'https://api.github.com'
 GITHUB_CALLBACK_URL = 'http://lz367.o1.gondor.io/repositories/github_auth/'
+
+
+GOOGLE_ID = os.environ.get('GOOGLE_ID', '')
+GOOGLE_SECRET = os.environ.get('GOOGLE_SECRET', '')
+GOOGLE_SCOPES = (
+    'http://www.blogger.com/feeds/',
+    'https://www.googleapis.com/auth/userinfo.profile',
+)
+GOOGLE_AUTH_URL = 'https://accounts.google.com/o/oauth2/auth'
+GOOGLE_CALLBACK_URL = 'http://lz367.o1.gondor.io/blogs/oauth2callback'
