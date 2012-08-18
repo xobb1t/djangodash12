@@ -2,6 +2,7 @@
 @bg: #334443;
 @bgimg: url('../images/grid.png');
 @color: #ddd;
+@colora: #ddd;
 @bordercolor: #415857;
 @fonr: 'Advent Pro', Arial,Helvetica,sans-serif;
 
@@ -15,7 +16,10 @@ textarea,
 body {
   color: @color;
   font-size: 12px;
-  font-family: Arial, 'Helvetica CY', 'Nimbus Sans L', sans-serif;
+  font-family: Tahoma, 'Geneva CY', sans-serif;
+}
+a {
+  color: @colora;
 }
 ::selection {
   background: #868686;
@@ -44,15 +48,8 @@ body {
   top: 50%;
   margin: -225px 0 0 -490px;
 }
-.l-header,
-.l-content {
-  position: relative;
-  overflow: hidden;
-}
-.l-header {
-}
-/*blocks*/
 
+/*blocks*/
 .b-header .col {
   position: relative;
   height: 250px;
@@ -69,17 +66,19 @@ body {
   display: inline-block;
   margin-top: 10px;
   width: 19px;
-  height: 27px;
+  height: 19px;
   background: url('../images/sprite.png') no-repeat -253px 0;
+  opacity: 0.5;
+  -moz-opacity: 0.5;
+  filter: alpha(opacity=5);
 }
-.b-index .col {
+.b-content .col {
   min-height: 100px;
   border-bottom: none;
 }
 .b-text {
   font-size: 15px;
   font-family: @fonr; 
-  /*font-family: Tahoma, 'Geneva CY', sans-serif;*/
 }
 .b-icon {
   display: inline-block;
@@ -103,8 +102,91 @@ body {
   -moz-opacity: 0.5;
   filter: alpha(opacity=5);
 }
-
-
+.b-title {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 14px;
+}
+.b-sselect {
+  margin-bottom: 15px;
+  height: 25px;
+}
+.b-sselect select{
+  width: 100%;
+  height: 25px;
+}
+.sselect {
+  position: relative;
+  height: 25px;
+}
+.sselect-text {
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  background-color: #293332;
+  border: 1px solid #4d5555;
+  height: 25px;
+  line-height: 27px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  border-radius: 5px;
+}
+.sselect-text .txt {
+  height: 25px;
+  line-height: 25px;
+  position: relative;
+  overflow: hidden;
+  display: block;
+  margin: 0 6px;
+}
+.sselect-text .icon {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  display: block;
+  width: 11px;
+  height: 10px;
+  background: url('../images/sprite.png') no-repeat -253px -20px;
+}
+.sselect-list {
+  position: absolute;
+  width: 100%;
+  bottom: 27px;
+  overflow: hidden;
+  background: #273130;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  border-radius: 2px;
+  display: none;
+}
+.sselect-open .sselect-list {
+  display: block;
+}
+.sselect-ul {
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  border-radius: 2px;
+  margin: 3px;
+  background-color: @color;
+  max-height: 221px;
+  overflow: auto;
+}
+.sselect-list a {
+  display: block;
+  padding: 3px 25px;
+  color: #444;
+  word-wrap: break-word;
+  text-decoration: none;
+}
+.sselect-list a:hover {
+  background-color: #cecece;
+}
+.sselect-list .selected a {
+  background: #d4d4d4 url('../images/ok.png') no-repeat 5px center;
+}
 /*global*/
 .align-center {
   text-align: center;
@@ -136,5 +218,10 @@ body {
   border-left: 1px dashed @bordercolor; 
 }
 .col:hover {
-   background-color: rgba(41,41,41, 0.1);
+  background-color: rgba(41,41,41, 0.3);
+  -webkit-transition: background-color 1.0s linear;
+  -moz-transition: background-color 1.0s linear;
+  -ms-transition: background-color 1.0s linear;
+  -o-transition: background-color 1.0s linear;
+  transition: background-color 1.0s linear;
 }
