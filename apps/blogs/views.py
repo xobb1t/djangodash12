@@ -55,7 +55,7 @@ def blog_form(request):
         blog = form.save()
         if blog is not None:
             request.session['blog'] = blog
-        return HttpResponse(blog.default_domain)
+        return HttpResponse(blog.domain)
     return Http404
 
 

@@ -34,7 +34,7 @@ class BlogForm(forms.Form):
         if blog_data:
             blog = Blog.objects.create(
                 source=self.blog_source, identificator=blog_id,
-                default_domain=blog_data['url'], domain=''
+                domain=blog_data['url']
             )
             return blog
         return None
