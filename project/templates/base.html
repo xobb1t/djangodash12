@@ -5,3 +5,10 @@
         {% endfor %}
     </ul>
 {% endif %}
+
+{% if github_user %}
+    <ul>
+        <li>Username: {{ github_user.username }}</li>
+        <li>ID: {{ github_user.identification }}</li>
+    </ul>
+{% endif %}
