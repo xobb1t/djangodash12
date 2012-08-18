@@ -8,4 +8,5 @@ urlpatterns = patterns(
         template_name='base.html'
     ), name='home'),
     url(r'^blogs/', include('blogs.urls')),
+    url(r'^repositories/', include('repositories.urls')),
 )

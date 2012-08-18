@@ -161,6 +161,7 @@ GITHUB_SCOPES = ('user', 'public_repo',)
 GITHUB_AUTH_HOST = 'https://github.com'
 GITHUB_AUTH_PATH = '/login/oauth/authorize'
 GITHUB_API_HOST = 'https://api.github.com'
+GITHUB_ACCESS_TOKEN_URL = 'https://github.com/login/oauth/access_token'
 GITHUB_CALLBACK_URL = 'http://lz367.o1.gondor.io/repositories/oauth2callback/'
 
 
