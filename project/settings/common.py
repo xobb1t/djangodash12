@@ -153,3 +153,5 @@ FIXTURE_DIRS = [
 GITHUB_ID = os.environ.get('GITHUB_ID', '')
 GITHUB_SECRET = os.environ.get('GITHUB_SECRET', '')
 GITHUB_SCOPES = ('user', 'public_repo',)
+GITHUB_AUTH_HOST = 'https://github.com'
+GITHUB_API_HOST = 'https://api.github.com'
