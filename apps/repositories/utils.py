@@ -13,7 +13,7 @@ def get_access_data(code):
     }
     response_json = requests.post(
         settings.GITHUB_ACCESS_TOKEN_URL,
-        data=simplejson.dumps(post_data_dict),
+        data=post_data_dict,
         headers={'Accept': 'application/json'}
     )
     return simplejson.loads(response_json.text)

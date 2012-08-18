@@ -11,7 +11,7 @@ def oauth2callback(request):
     if not query_code:
         return auth_failed(request, 'Did not receive code in query string!')
 
-    access_data = get_access_data(code)
+    access_data = get_access_data(query_code)
     access_token = access_data.get('access_token', None)
     if not access_token:
         return auth_failed(request, 'Did not receive access token!')
