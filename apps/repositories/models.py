@@ -14,7 +14,7 @@ class User(models.Model):
 class Repo(models.Model):
 
     user = models.ForeignKey('repositories.User', related_name='repos')
-    blog = models.ForeignKey('blogs.Blog', related_name='repos', null=True)
+    blog = models.ForeignKey('blogs.Blog', related_name='repos')
     name = models.CharField(max_length=100)
     cname = models.CharField(max_length=255)
 
