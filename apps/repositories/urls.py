@@ -9,10 +9,4 @@ urlpatterns = patterns(
     url(r'^oauth2callback/$', oauth2callback,
         name='repositories_oauth2callback'
     ),
-    url(r'^login/$', 
-        TemplateView.as_view(
-            template_name='repositories/login.html'
-        ), 
-        name='repositories_login'
-    ),
 )

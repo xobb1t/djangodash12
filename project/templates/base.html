@@ -6,21 +6,22 @@
     </ul>
 {% endif %}
 
-{% if blogger_user %}
 <p><b>Blogger account</b></p>
-<ul>
-  <li>Username: {{ blogger_user.username }}</li>
-  <li>ID: {{ blogger_user.identification }}</li>
-</ul>
-{% endif %}
+{% if blogger_user %}
+    <ul>
+      <li>Username: {{ blogger_user.username }}</li>
+      <li>ID: {{ blogger_user.identification }}</li>
+    </ul>
 {% else %}
-<a href="{{ google_auth_url }}">Enter to google</a>
+    <a href="{{ google_auth_url }}">Enter to Google</a>
 {% endif %}
 
-{% if github_user %}
 <p><b>Github account</b></p>
+{% if github_user %}
     <ul>
         <li>Username: {{ github_user.username }}</li>
         <li>ID: {{ github_user.identification }}</li>
     </ul>
+{% else %}
+    <a href="{{ github_auth_url }}">Enter to GitHub</a>
 {% endif %}
