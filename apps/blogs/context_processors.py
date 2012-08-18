@@ -9,7 +9,7 @@ def google_auth_url(request):
         'redirect_uri': settings.GOOGLE_CALLBACK_URL,
         'scope': ' '.join(settings.GOOGLE_SCOPES),
         'state': request.path,
-        'access_type': 'offline'
+        'access_type': 'online'
     }
     query_string = urllib.urlencode(data)
     auth_url = '{0}?{1}'.format(settings.GOOGLE_AUTH_URL, query_string)

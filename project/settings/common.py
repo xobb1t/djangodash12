@@ -174,3 +174,4 @@ GOOGLE_SCOPES = (
 GOOGLE_AUTH_URL = 'https://accounts.google.com/o/oauth2/auth'
 GOOGLE_TOKEN_URL = 'https://accounts.google.com/o/oauth2/token'
 GOOGLE_CALLBACK_URL = 'http://lz367.o1.gondor.io/blogs/oauth2callback'
+BLOGGER_API_ROOT = 'https://www.googleapis.com/blogger/v3/'
