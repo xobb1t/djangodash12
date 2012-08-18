@@ -25,7 +25,7 @@ def oauth2callback(request):
         identification=identification,
         defaults={
             'access_token': access_token,
-            'username' username
+            'username': username
         }
     )
     if not created:
