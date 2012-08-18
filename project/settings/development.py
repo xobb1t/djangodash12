@@ -27,6 +27,7 @@ DEBUG_TOOLBAR_CONFIG = {
 
 INTERNAL_IPS = ('127.0.0.1',)
 GOOGLE_CALLBACK_URL = 'http://localhost:8000/blogs/oauth2callback'
+GITHUB_CALLBACK_URL = 'http://localhost:8000/repositories/oauth2callback/'
 
 INSTALLED_APPS += ('devserver',)
 DEVSERVER_MODULES = []
