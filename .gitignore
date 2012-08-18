@@ -25,3 +25,8 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+
+#Project stuff
+project/site_media
+project/secret.txt
+project/sqlite3.db
