@@ -48,11 +48,11 @@ def save_repo(request):
         repositories_user=request.session.get('repositories_user'),
         data=request.POST
     )
-    success = False
-    if form.is_valid():
-        success = True
+    form_valid = form.is_valid()
+    if form_valid:
+        pass
 
     return render(request, 'repositories/save_repo.html', {
         'repo_form': form,
-        'success': success
+        'form_valid': form_valid
     })
