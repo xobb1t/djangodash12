@@ -16,6 +16,7 @@ class BlogForm(forms.Form):
             'users/self/blogs',
             token
         )
-        for blog in blogs_data['items']:
-            choices+=((blog['id'], blog['name']),)
+        if blogs_data:
+            for blog in blogs_data['items']:
+                choices+=((blog['id'], blog['name']),)
         self.fields['blog'].choices = choices
