@@ -86,6 +86,7 @@ TEMPLATE_CONTEXT_PROCESSORS = [
     "django.core.context_processors.media",
     "django.core.context_processors.static",
     "django.contrib.messages.context_processors.messages",
+    "blogs.context_processors.google_auth_url",
 ]
 
 
@@ -162,8 +163,9 @@ GITHUB_CALLBACK_URL = 'http://lz367.o1.gondor.io/repositories/github_auth/'
 GOOGLE_ID = os.environ.get('GOOGLE_ID', '')
 GOOGLE_SECRET = os.environ.get('GOOGLE_SECRET', '')
 GOOGLE_SCOPES = (
-    'http://www.blogger.com/feeds/',
     'https://www.googleapis.com/auth/userinfo.profile',
+    'https://www.googleapis.com/auth/blogger',
 )
 GOOGLE_AUTH_URL = 'https://accounts.google.com/o/oauth2/auth'
+GOOGLE_TOKEN_URL = 'https://accounts.google.com/o/oauth2/token'
 GOOGLE_CALLBACK_URL = 'http://lz367.o1.gondor.io/blogs/oauth2callback'
