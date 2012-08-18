@@ -42,17 +42,19 @@
       </header>
       <section class="b-content clearfix">
         <div class="col col-l">
-          <div class="align-center">
-            <span class="b-title">Import blog:</span>
-            <div class="b-sselect js-select">
-              <select>
-                <option>Select blog for export</option>
-                <option>blog1.com</option>
-                <option>blog2.com</option>
-                <option>blog3.com</option>
-              </select>
-            </div>
-            <input type="submit" class="btn btn-inverse" value="Save">
+          <div class="align-center" id="js-save">
+            <form action="#?" data-action="/save/">
+              <span class="b-title">Import blog:</span>
+              <div class="b-sselect js-select">
+                <select name="blog">
+                  <option value="">Select blog for export</option>
+                  <option value="0">blog1.com</option>
+                  <option value="1">blog2.com</option>
+                  <option value="2">blog3.com</option>
+                </select>
+              </div>
+              <input type="submit" class="btn btn-inverse" value="Save">
+            </form>
           </div>
         </div><!-- class="col col-l" -->
         <div class="col col-c">
@@ -64,7 +66,7 @@
         </div><!-- class="col col-c" -->
         <div class="col col-r">
           <div class="align-center">
-            <a href="#?" class="b-icon b-icon_github js-popover disabled" data-original-title="GitHub.com" data-content="At the beginning login in blog platform"></a>
+            <a href="javascript:void(0)" class="b-icon b-icon_github js-popover disabled" id="js-github" data-original-title="GitHub.com" data-content="At the beginning login in blog platform"></a>
           </div>
         </div><!-- class="col col-r" -->
       </section>
