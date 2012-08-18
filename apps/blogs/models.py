@@ -44,9 +44,3 @@ class Blog(models.Model):
 
     def __unicode__(self):
         return self.domain
-
-    def save(self, *args, **kwargs):
-        self.domain = self.domain.lower()
-        self.domain = self.domain.replace('/', '')
-        self.domain = self.domain.replace('http:', '')
-        super(Blog, self).save(*args, **kwargs)
