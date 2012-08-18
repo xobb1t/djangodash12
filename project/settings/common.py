@@ -151,6 +151,9 @@ FIXTURE_DIRS = [
     os.path.join(PACKAGE_ROOT, "fixtures"),
 ]
 
+USE_TZ = False
+
+
 GITHUB_ID = os.environ.get('GITHUB_ID', '')
 GITHUB_SECRET = os.environ.get('GITHUB_SECRET', '')
 GITHUB_SCOPES = ('user', 'public_repo',)
