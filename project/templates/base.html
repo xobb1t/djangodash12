@@ -21,6 +21,10 @@
     <ul>
         <li>Username: {{ github_user.username }}</li>
         <li>ID: {{ github_user.identification }}</li>
+    {% if repo_form %}
+        <li>Repo name: {{ repo_form.name }}</li>
+        <li>Domain CNAME: {{ repo_form.cname }}</li>
+    {% endif %}
     </ul>
 {% else %}
     <a href="{{ github_auth_url }}">Enter to GitHub</a>
