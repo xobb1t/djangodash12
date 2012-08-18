@@ -1,0 +1,9 @@
+{% if form_valid %}
+    success
+{% else %}
+    {{ repo_form.name }}
+    {{ repo_form.name.errors }}
+    <br>
+    {{ repo_form.cname }}
+    {{ repo_form.cname.errors }}
+{% endif %}

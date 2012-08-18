@@ -1,7 +1,8 @@
 from django.contrib import messages
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 
 from .models import User
+from .forms import RepoForm
 from .utils import get_access_data, get_user_info
 
 
@@ -40,3 +41,18 @@ def oauth2callback(request):
 def auth_failed(request, error_msg):
     messages.error(request, error_msg)
     return redirect('home')
+
+
+def save_repo(request):
+    form = RepoForm(
+        repositories_user=request.session.get('repositories_user'),
+        data=request.POST
+    )
+    form_valid = form.is_valid()
+    if form_valid:
+        pass
+
+    return render(request, 'repositories/save_repo.html', {
+        'repo_form': form,
+        'form_valid': form_valid
+    })
