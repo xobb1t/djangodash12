@@ -1,4 +1,3 @@
-from django.http import Http404
 from django.contrib import messages
 from django.shortcuts import redirect
 
@@ -7,19 +6,18 @@ from .utils import get_access_data, get_user_info
 
 
 def oauth2callback(request):
-    if not request.GET.get('code', None):
-        raise Http404
+    get_params = request.GET.copy()
+    if not get_params.get('code', None):
+        return auth_failed(request, 'Did not receive code in query string!')
 
     access_data = get_access_data(request.GET.get('code'))
     access_token = access_data.get('access_token', None)
     if not access_token:
-        messages.error(request, 'Did not receive access token!')
-        return redirect('home')
+        return auth_failed(request, 'Did not receive access token!')
 
     identification, username = get_user_info(access_token)
     if not identification or not username:
-        messages.error(request, 'Did not receive user info!')
-        return redirect('home')
+        return auth_failed(request, 'Did not receive user info!')
 
     user_obj, created = User.objects.get_or_create(
         identification=identification,
@@ -35,4 +33,9 @@ def oauth2callback(request):
 
     request.session['repositories_user'] = user_obj
     request.session.modified = True
+    return redirect('home')
+
+
+def auth_failed(request, error_msg):
+    messages.error(request, error_msg)
     return redirect('home')
