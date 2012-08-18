@@ -12,7 +12,8 @@ class SourceManager(models.Manager):
         defaults = kwargs.get('defaults', {})
         if not created:
             for key, value in defaults.items():
-                setattr(instance, key, value)
+                if hasattr(instance, key):
+                    setattr(instance, key, value)
             instance.save()
         return instance, created
 
