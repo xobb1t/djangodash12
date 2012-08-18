@@ -88,6 +88,7 @@ TEMPLATE_CONTEXT_PROCESSORS = [
     "django.contrib.messages.context_processors.messages",
     "blogs.context_processors.google_auth_url",
     "repositories.context_processors.github_auth_url",
+    "repositories.context_processors.github_user",
 ]
 
 
