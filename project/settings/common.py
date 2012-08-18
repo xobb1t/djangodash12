@@ -1,5 +1,4 @@
 import os
-from random import choice
 
 
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
@@ -74,15 +73,8 @@ STATICFILES_FINDERS = [
 ]
 
 # Make this unique, and don"t share it with anybody.
-SECRET_KEY_FILE = os.path.join(PROJECT_ROOT, 'secret.txt')
-if not os.path.exists(SECRET_KEY_FILE):
-    chars = 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)'
-    SECRET_KEY = ''.join(choice(chars) for i in range(50))
-    with open(SECRET_KEY_FILE, 'w') as f:
-        f.write(SECRET_KEY)
-else:
-    with open(SECRET_KEY_FILE) as f:
-        SECRET_KEY = f.read()
+
+SECRET_KEY = 'SECRET KEY'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = [

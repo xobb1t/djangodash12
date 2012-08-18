@@ -1,7 +1,10 @@
 import os
 import urlparse
 
-from .settings.common import *
+from random import choice
+
+from .common import *
+
 
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
@@ -24,8 +27,20 @@ if "GONDOR_DATABASE_URL" in os.environ:
 
 SITE_ID = 1 # set this to match your Sites setup
 
-MEDIA_ROOT = os.path.join(os.environ["GONDOR_DATA_DIR"], "site_media", "media")
-STATIC_ROOT = os.path.join(os.environ["GONDOR_DATA_DIR"], "site_media", "static")
+DATA_DIR = os.environ["GONDOR_DATA_DIR"]
+
+MEDIA_ROOT = os.path.join(DATA_DIR, "site_media", "media")
+STATIC_ROOT = os.path.join(DATA_DIR, "site_media", "static")
+
+SECRET_KEY_FILE = os.path.join(DATA_DIR, 'secret.txt')
+if not os.path.exists(SECRET_KEY_FILE):
+    chars = 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)'
+    SECRET_KEY = ''.join(choice(chars) for i in range(50))
+    with open(SECRET_KEY_FILE, 'w') as f:
+        f.write(SECRET_KEY)
+else:
+    with open(SECRET_KEY_FILE) as f:
+        SECRET_KEY = f.read()
 
 MEDIA_URL = "/site_media/media/" # make sure this maps inside of site_media_url
 STATIC_URL = "/site_media/static/" # make sure this maps inside of site_media_url
