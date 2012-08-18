@@ -6,11 +6,12 @@ from .utils import get_access_data, get_user_info
 
 
 def oauth2callback(request):
-    get_params = request.GET.copy()
-    if not get_params.get('code', None):
+    query_params = request.GET.copy()
+    query_code = query_params.get('code', None)
+    if not query_code:
         return auth_failed(request, 'Did not receive code in query string!')
 
-    access_data = get_access_data(request.GET.get('code'))
+    access_data = get_access_data(code)
     access_token = access_data.get('access_token', None)
     if not access_token:
         return auth_failed(request, 'Did not receive access token!')
