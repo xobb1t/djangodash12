@@ -1,6 +1,6 @@
+from django.http import Http404
 from django.contrib import messages
-from django.core.urlresolvers import reverse
-from django.http import HttpResponseRedirect, Http404
+from django.shortcuts import redirect
 
 from .models import User
 from .utils import get_access_data, get_user_info
@@ -14,12 +14,12 @@ def oauth2callback(request):
     access_token = access_data.get('access_token', None)
     if not access_token:
         messages.error(request, 'Did not receive access token!')
-        return HttpResponseRedirect(reverse('home'))
+        return redirect('home')
 
     identification, username = get_user_info(access_token)
     if not identification or not username:
         messages.error(request, 'Did not receive user info!')
-        return HttpResponseRedirect(reverse('home'))
+        return redirect('home')
 
     user_obj, created = User.objects.get_or_create(
         identification=identification,
@@ -35,4 +35,4 @@ def oauth2callback(request):
 
     request.session['repositories_user'] = user_obj
     request.session.modified = True
-    return HttpResponseRedirect(reverse('home'))
+    return redirect('home')
