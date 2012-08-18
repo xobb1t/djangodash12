@@ -86,6 +86,7 @@ TEMPLATE_CONTEXT_PROCESSORS = [
     "django.core.context_processors.media",
     "django.core.context_processors.static",
     "django.contrib.messages.context_processors.messages",
+    "repositories.context_processors.github_auth_url",
 ]
 
 
