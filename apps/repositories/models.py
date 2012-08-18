@@ -16,7 +16,7 @@ class Repo(models.Model):
     user = models.ForeignKey('repositories.User', related_name='repos')
     blog = models.ForeignKey('blogs.Blog', related_name='repos')
     name = models.CharField(max_length=100)
-    cname = models.CharField(max_length=255)
+    cname = models.CharField(max_length=255, blank=True)
 
     def __unicode__(self):
         return self.name
