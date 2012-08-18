@@ -4,7 +4,7 @@ import sys
 
 apps_root = os.path.join(
     os.path.dirname(__file__),
-    os.parname, os.parname, 
+    os.pardir, os.pardir, 
     'apps'
 )
 apps_root = os.path.normpath(os.path.abspath(apps_root))
