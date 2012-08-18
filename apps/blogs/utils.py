@@ -8,7 +8,7 @@ class AuthError(Exception):
     pass
 
 
-def get_tokens(code)
+def get_tokens(code):
     data = {
         'code': code,
         'client_id': settings.GOOGLE_ID,
