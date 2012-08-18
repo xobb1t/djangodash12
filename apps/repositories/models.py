@@ -19,4 +19,4 @@ class Repo(models.Model):
     cname = models.CharField(max_length=255, blank=True)
 
     def __unicode__(self):
-        return self.name
+        return u'{0}/{1}'.format(self.user, self.name)
