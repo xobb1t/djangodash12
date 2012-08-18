@@ -32,9 +32,12 @@ class BlogForm(forms.Form):
             self.blog_source.access_token
         )
         if blog_data:
+            domain = blog_data['url'].lower().replace('/', '')
+            domain = domain.replace('http:', '')
             blog = Blog.objects.create(
-                source=self.blog_source, identificator=blog_id,
-                domain=blog_data['url']
+                source=self.blog_source,
+                identificator=blog_id,
+                domain=domain
             )
             return blog
         return None
