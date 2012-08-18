@@ -29,7 +29,8 @@ def oauth2callback(request):
         resource='userinfo',
         access_token=data['access_token'],
     )
-    expiration_datetime = datetime.now() + timedelta(data['expires_in'])
+    expires_in = timedelta(seconds=data['expires_in'])
+    expiration_datetime = datetime.now() + expires_in
     defaults = {
         'username': user_info['email'],
         'access_token': data['access_token'],
