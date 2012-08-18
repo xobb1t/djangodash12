@@ -7,10 +7,10 @@
 {% endif %}
 
 <p><b>Blogger account</b></p>
-{% if blogger_user %}
+{% if blog_source %}
     <ul>
-      <li>Username: {{ blogger_user.username }}</li>
-      <li>ID: {{ blogger_user.identification }}</li>
+      <li>Username: {{ blog_source.username }}</li>
+      <li>ID: {{ blog_source.identificator }}</li>
     </ul>
 {% else %}
     <a href="{{ google_auth_url }}">Enter to Google</a>
