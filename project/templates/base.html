@@ -1,0 +1,14 @@
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+{% if github_user %}
+    <ul>
+        <li>Username: {{ github_user.username }}</li>
+        <li>ID: {{ github_user.identification }}</li>
+    </ul>
+{% endif %}
