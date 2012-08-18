@@ -21,10 +21,12 @@ $(document).ready(function(){
     //     $block.html(data.content);
     //     $('.col-r disabled').removeClass('disabled');
     //     $('#js-github').attr('href', data.githab);
+    //     $('#js-github').attr({'data-content': 'Sign in via OAuth2 protocol'});
     //   }
     // });
     $('.col-r .disabled').removeClass('disabled');
     $('#js-github').attr({'href': 'data.githab'});
+    $('#js-github').attr({'data-content': 'Sign in via OAuth2 protocol'});
     return false;
   });
 });
