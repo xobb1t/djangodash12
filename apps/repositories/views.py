@@ -33,7 +33,7 @@ def oauth2callback(request):
         user_obj.username = username
         user_obj.save()
 
-    request.session['repositories_user'] = user_obj
+    request.session['repo_user'] = user_obj
     request.session.modified = True
     return redirect('home')
 
@@ -44,16 +44,16 @@ def auth_failed(request, error_msg):
 
 
 def save_repo(request):
-    repositories_user = request.session.get('repositories_user')
+    repo_user = request.session.get('repo_user')
     form = RepoForm(
-        repositories_user=repositories_user,
+        repo_user=repo_user,
         data=request.POST
     )
     form_valid = form.is_valid()
     if form_valid:
         blog = request.session.get('blog')
         obj, created = Repo.objects.get_or_create(
-            user=repositories_user, blog=blog, name=form['name'].value(),
+            user=repo_user, blog=blog, name=form['name'].value(),
             cname=form['cname'].value()
         )
         request.session['repo'] = obj
