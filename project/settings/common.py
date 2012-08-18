@@ -87,6 +87,7 @@ TEMPLATE_CONTEXT_PROCESSORS = [
     "django.core.context_processors.static",
     "django.contrib.messages.context_processors.messages",
     "blogs.context_processors.google_auth_url",
+    "repositories.context_processors.github_auth_url",
 ]
 
 
@@ -160,7 +161,7 @@ GITHUB_SCOPES = ('user', 'public_repo',)
 GITHUB_AUTH_HOST = 'https://github.com'
 GITHUB_AUTH_PATH = '/login/oauth/authorize'
 GITHUB_API_HOST = 'https://api.github.com'
-GITHUB_CALLBACK_URL = 'http://lz367.o1.gondor.io/repositories/github_auth/'
+GITHUB_CALLBACK_URL = 'http://lz367.o1.gondor.io/repositories/oauth2callback/'
 
 
 GOOGLE_ID = os.environ.get('GOOGLE_ID', '')
