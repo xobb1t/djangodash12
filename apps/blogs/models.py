@@ -20,7 +20,7 @@ class SourceManager(models.Manager):
 class Source(models.Model):
 
     type = models.CharField(max_length=50, choices=SOURCES, default='blogger')
-    user_id = models.CharField(max_length=255)
+    identificator = models.CharField(max_length=255)
     username = models.CharField(max_length=255)
 
     access_token = models.CharField(max_length=255)

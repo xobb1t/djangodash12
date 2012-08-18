@@ -7,7 +7,7 @@ from django.http import HttpResponse
 from django.shortcuts import redirect, render
 
 from .models import Source
-from .utils import get_tokens, AuthError, blogger_resource
+from .utils import get_tokens, AuthError, api_resource
 
 
 def oauth2callback(request):
@@ -18,20 +18,28 @@ def oauth2callback(request):
         data = get_tokens(kwargs.get('code'))
     except AuthError:
         return authorization_failed(request)
-    user_info = blogger_resource(
+
+    blog_info = api_resource(
+        root=settings.BLOGGER_API_ROOT,
         resource='users/self',
+        access_token=data['access_token'],
+    )
+    user_info = api_resource(
+        root=settings.GOOGLE_API_ROOT,
+        resource='userinfo',
         access_token=data['access_token'],
     )
     expiration_datetime = datetime.now() + timedelta(data['expires_in'])
     defaults = {
-        'username': user_info.get('displayName', ''),
+        'username': user_info['email'],
         'access_token': data['access_token'],
         'expiration_datetime': expiration_datetime,
     }
+
     source, created = Source.objects.create_or_update(
-        user_id=user_info['id'], defaults=defaults
+        identificator=blog_info['id'], defaults=defaults
     )
-    request.session['source_id'] = source.pk
+    request.session['blog_source'] = source
     return HttpResponse()
 
 
