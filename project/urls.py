@@ -6,5 +6,6 @@ urlpatterns = patterns(
     '',
     url(r'^$', TemplateView.as_view(
         template_name='base.html'
-    )),
+    ), name='home'),
+    url(r'^blogs/', include('blogs.urls')),
 )
