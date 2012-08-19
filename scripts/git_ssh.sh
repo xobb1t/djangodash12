@@ -1,2 +1,2 @@
 #!/bin/bash
-ssh -i $GIT_SSH_DIR/keys/id_rsa $1 $2
+ssh -i $KEYS_ROOT/id_rsa $1 $2

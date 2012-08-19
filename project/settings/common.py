@@ -163,7 +163,7 @@ USE_TZ = False
 
 GITHUB_ID = os.environ.get('GITHUB_ID', '')
 GITHUB_SECRET = os.environ.get('GITHUB_SECRET', '')
-GITHUB_SCOPES = ('user', 'public_repo',)
+GITHUB_SCOPES = ('user', 'public_repo', 'repo')
 GITHUB_AUTH_URL = 'https://github.com/login/oauth/authorize'
 GITHUB_API_HOST = 'https://api.github.com'
 GITHUB_ACCESS_TOKEN_URL = 'https://github.com/login/oauth/access_token'
@@ -189,3 +189,4 @@ PARSE_PAGES_COUNT = 20
 djcelery.setup_loader()
 
 BLOGS_ROOT = os.path.join(PROJECT_ROOT, 'blogs')
+KEYS_ROOT = os.path.join(PACKAGE_ROOT, 'keys')
