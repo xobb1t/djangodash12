@@ -187,4 +187,4 @@ PARSE_PAGES_COUNT = 20
 
 djcelery.setup_loader()
 
-DATA_DIR = os.path.join(PROJECT_ROOT)
+DATA_DIR = PROJECT_ROOT
