@@ -25,5 +25,5 @@ class Command(BaseCommand):
         git_ssh = settings.GIT_SSH
         with open(git_ssh, 'w') as f:
             f.write(render_to_string('git_ssh.sh_tpl', {}))
-        os.chmod(git_shh, stat.S_IRWXU)
+        os.chmod(git_ssh, stat.S_IRWXU)
         os.chmod(git_ssh, stat.S_IRWXG)
