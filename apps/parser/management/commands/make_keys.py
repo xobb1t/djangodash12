@@ -23,6 +23,6 @@ class Command(BaseCommand):
                 'ssh-keygen -q -N '' -t rsa -f {0}'.format(id_rsa).split(' ')
             ).wait()
         git_ssh = settings.GIT_SSH
+        Popen(['chmod', '+rwx', git_ssh]).wait()
         with open(git_ssh, 'w') as f:
             f.write(render_to_string('git_ssh.sh_tpl', {}))
-        os.chmod(git_ssh, stat.S_IXOTH)
