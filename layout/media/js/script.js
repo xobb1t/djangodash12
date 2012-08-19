@@ -31,7 +31,6 @@ $(document).ready(function(){
     $('#js-github').attr({'data-content': 'Sign in via OAuth2 protocol'});
     return false;
   });
-
   $('#js-repo form').submit(function(){
     var $this = $(this);
     var $block = $this.closest('#js-repo');
@@ -80,5 +79,10 @@ $(document).ready(function(){
     var n = 20;
     $('#js-import .bar').animate({'width': n + "%"});
   }
-
+  if ($('#js-error').length) {
+    $('#js-error').animate({'top': 0 + '%'}, 2000);
+    setTimeout(function() {
+      $('#js-error').animate({'top': -105 + '%'}, 2000);
+    }, 5000)
+  }
 });

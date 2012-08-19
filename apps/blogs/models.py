@@ -23,6 +23,7 @@ class Source(models.Model):
     type = models.CharField(max_length=50, choices=SOURCES, default='blogger')
     identificator = models.CharField(max_length=255)
     username = models.CharField(max_length=255)
+    email = models.EmailField(max_length=255)
 
     access_token = models.CharField(max_length=255)
     expiration_datetime = models.DateTimeField()

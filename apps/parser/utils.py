@@ -1,14 +1,34 @@
-from datetime import datetime
-import html2text
 import os
+import re
 import requests
 import slumber
 
+from datetime import datetime
 from django.conf import settings
 from django.template.loader import render_to_string
+from html2text import html2text as html2text_orig
+from StringIO import StringIO
 
 
-def get_slumber_api(root, access_token):
+link_re = re.compile(r"https?://([^ \n]+\n)+[^ \n]+", re.MULTILINE)
+
+
+def html2text(html):
+    """use html2text but repair newlines cutting urls"""
+    txt = html2text_orig(html)
+    links = list(link_re.finditer(txt))
+    # replace links
+    out = StringIO()
+    pos = 0
+    for l in links:
+        out.write(txt[pos:l.start()])
+        out.write(l.group().replace("\n", ""))
+        pos = l.end()
+    out.write(txt[pos:])
+    return out.getvalue()
+
+
+def get_api(root, access_token):
     session = requests.session(
         params={'access_token': access_token}
     )
@@ -17,7 +37,7 @@ def get_slumber_api(root, access_token):
 
 def parse_blog_posts(process, max_pages, page_token=None, page_size=20):
     blog = process.blog
-    api = get_slumber_api(
+    api = get_api(
         settings.BLOGGER_API_ROOT,
         blog.source.access_token
     )
@@ -57,7 +77,8 @@ def convert_blog_posts(process, posts):
 
 
 def convert_post_content(post):
-    return html2text.html2text(post.get('content', ''))
+    content = post.get('content', '')
+    return html2text(content)
 
 
 def convert_blog_post(post, slug, file_path):
@@ -71,4 +92,4 @@ def convert_blog_post(post, slug, file_path):
         'content': convert_post_content(post),
     })
     with open(file_path, 'w') as f:
-        f.write(result)
+        f.write(result.encode('utf-8'))

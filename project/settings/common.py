@@ -2,7 +2,8 @@ import os
 import djcelery
 
 
-PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
+PROJECT_ROOT = os.path.join(os.path.dirname(__file__), os.pardir)
+PROJECT_ROOT = os.path.abspath(PROJECT_ROOT)
 PACKAGE_ROOT = os.path.abspath(os.path.join(PROJECT_ROOT, os.pardir))
 
 DEBUG = False

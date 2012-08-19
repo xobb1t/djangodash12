@@ -31,3 +31,6 @@ GITHUB_CALLBACK_URL = 'http://localhost:8000/repositories/oauth2callback/'
 
 INSTALLED_APPS += ('devserver',)
 DEVSERVER_MODULES = []
+
+BROKER_BACKEND = "djkombu.transport.DatabaseTransport"
+CELERY_RESULTS_BACKEND = "djkombu.transport.DatabaseTransport"
