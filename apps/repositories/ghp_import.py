@@ -9,10 +9,15 @@
 import optparse as op
 import os
 import subprocess as sp
+import signal
 import sys
 import time
 
 __usage__ = "%prog [OPTIONS] DIRECTORY"
+
+
+def subprocess_setup():
+    signal.signal(signal.SIGPIPE, signal.SIG_IGN)
 
 
 def _enc(text):
@@ -52,7 +57,7 @@ def find_repo(path):
 
 def try_rebase(remote):
     cmd = ['git', 'rev-list', '--max-count=1', 'origin/gh-pages']
-    p = sp.Popen(cmd, stdin=sp.PIPE, stdout=sp.PIPE, stderr=sp.PIPE)
+    p = sp.Popen(cmd, stdin=sp.PIPE, stdout=sp.PIPE, stderr=sp.PIPE, preexec_fn=subprocess_setup)
     (rev, ignore) = p.communicate()
     if p.wait() != 0:
         return True
@@ -62,13 +67,13 @@ def try_rebase(remote):
     return True
 
 def get_config(key):
-    p = sp.Popen(['git', 'config', key], stdin=sp.PIPE, stdout=sp.PIPE)
+    p = sp.Popen(['git', 'config', key], stdin=sp.PIPE, stdout=sp.PIPE, preexec_fn=subprocess_setup)
     (value, stderr) = p.communicate()
     return value.strip()
 
 def get_prev_commit():
     cmd = ['git', 'rev-list', '--max-count=1', 'gh-pages']
-    p = sp.Popen(cmd, stdin=sp.PIPE, stdout=sp.PIPE, stderr=sp.PIPE)
+    p = sp.Popen(cmd, stdin=sp.PIPE, stdout=sp.PIPE, stderr=sp.PIPE, preexec_fn=subprocess_setup)
     (rev, ignore) = p.communicate()
     if p.wait() != 0:
         return None
@@ -101,7 +106,7 @@ def add_file(pipe, srcpath, tgtpath):
 
 def run_import(srcdir, message):
     cmd = ['git', 'fast-import', '--date-format=raw', '--quiet']
-    pipe = sp.Popen(cmd, stdin=sp.PIPE)
+    pipe = sp.Popen(cmd, stdin=sp.PIPE, preexec_fn=subprocess_setup)
     start_commit(pipe, message)
     for path, dnames, fnames in os.walk(srcdir):
         for fn in fnames:
