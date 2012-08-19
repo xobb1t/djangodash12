@@ -5,6 +5,7 @@ requests==0.13.6
 simplejson==2.6.1
 
 #CELERY AND REQUIREMENTS
+django-kombu==0.9.4
 kombu==1.4.1
 amqplib==1.0.2
 anyjson==0.3.1
