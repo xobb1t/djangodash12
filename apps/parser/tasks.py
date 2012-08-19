@@ -19,6 +19,7 @@ def exception_handle(func):
     return decorator
 
 
+@exception_handle
 @task
 def work_on(process):
     process.update_stage(1)
