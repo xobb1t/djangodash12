@@ -103,11 +103,12 @@ a {
 .b-post header .date {
   display: block;
   font-size: 12px;
-  padding-top: 3px;
+  padding-top: 6px;
 }
 .b-post .entry-title {
   color: #334443;
   font-weight: 700;
+  font-size: 27px;
 }
 .b-post footer {
   padding-top: 10px;
