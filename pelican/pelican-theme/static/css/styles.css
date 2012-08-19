@@ -28,7 +28,7 @@ a {
   overflow: hidden;
   margin: 0 auto; 
   min-height: 100%;
-  /*background-color: #ddd;*/
+  min-width: 1000px;
 }
 .l-header {
   padding: 20px 0;
@@ -38,17 +38,17 @@ a {
 }
 .l-header .wrap {
   margin: 0 auto;
-  width: 960px;
+  width: 920px;
 }
 .l-middle {
   margin: 0 auto;
-  padding-bottom: 20px;
+  padding: 0 20px;
   width: 960px;
   overflow: hidden;
 }
 .l-middle .l-content {
-  overflow: hidden;
   float: left;
+  overflow: hidden;
   width: 725px;
 }
 .l-middle .l-sidebar {
@@ -164,6 +164,7 @@ a {
 }
 
 .pagination {
+  margin-bottom: 20px;
   padding: 10px;
   -webkit-border-radius: 14px;
   -moz-border-radius: 14px;
@@ -210,6 +211,9 @@ a {
 .post-content a {
   color: #334443;
 }
+.post-content img {
+  max-width: 100%;
+}
 .post-content p {
   margin-bottom: 14px;
 }
@@ -247,4 +251,35 @@ a {
 .post-content ol.unstyled {
   margin-left: 0;
   list-style: none;
+}
+
+@media (max-width: 767px) {
+  .l-middle .l-content,
+  .l-middle .l-sidebar {
+    float: none;
+    width: 100%;
+    margin: 0;
+  }
+  .l-middle {
+    width: auto;
+  }
+  .l-header .wrap {
+    width: auto;
+    margin: 0 40px;
+  }
+  .l-page {
+    min-width: 750px;
+    width: auto;
+  }
+  .b-post .entry-title {
+    font-size: 22px;
+  }
+}
+@media (max-width: 480px) {
+  .b-post .entry-title {
+    font-size: 18px ;
+  }
+  .l-page {
+    min-width: 480px;
+  }
 }

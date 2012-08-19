@@ -24,6 +24,10 @@
       </div>
     </header>
     <section class="l-middle">
+      <div class="l-content">
+        {% block content %}
+        {% endblock %}
+      </div><!-- class="l-content" -->
       <aside class="l-sidebar">
         {% if tags %}
         <div class="b-widget">
@@ -65,10 +69,6 @@
           </div>
         {% endif %}
       </aside>
-      <div class="l-content">
-        {% block content %}
-        {% endblock %}
-      </div><!-- class="l-content" -->
     </section><!-- class="l-middle" -->
   </div><!-- class="l-page" -->
   <script type="text/javascript"  src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
