@@ -73,7 +73,7 @@ $(document).ready(function(){
     var action = '/parser/start/';
     $.ajax({
       url: action,
-      type: "POST",
+      type: "GET",
       success: function(data){
         $('#js-import .bar').animate({'width': data + "%"});
       }
