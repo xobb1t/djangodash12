@@ -1,6 +1,8 @@
+from datetime import datetime
+import html2text
 import os
-import slumber
 import requests
+import slumber
 
 from django.conf import settings
 from django.template.loader import render_to_string
@@ -41,7 +43,10 @@ def get_post_slug(domain, full_url):
 
 def convert_blog_posts(process, posts):
     content_root = os.path.join(process.path, 'content')
-    os.makedirs(content_root)
+    try:
+        os.makedirs(content_root)
+    except OSError:
+        pass
     domain = process.blog.domain
     for post in posts:
         slug = get_post_slug(domain, post.get('url'))
@@ -51,8 +56,19 @@ def convert_blog_posts(process, posts):
         convert_blog_post(post, slug, file_path)
 
 
+def convert_post_content(post):
+    return html2text.html2text(post.get('content', ''))
+
+
 def convert_blog_post(post, slug, file_path):
+    published = post.get('published', '')
+    date_string = published[:-6]
+    date_format = '%Y-%m-%dT%H:%M:%S'
+    result = render_to_string('parser/post.md_tpl', {
+        'date': datetime.strptime(date_string, date_format),
+        'post': post,
+        'slug': slug,
+        'content': convert_post_content(post),
+    })
     with open(file_path, 'w') as f:
-        f.write(render_to_string('parser/post.md', {
-            'post': post, 'slug': slug
-        }))
+        f.write(result)
