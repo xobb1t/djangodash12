@@ -5,7 +5,7 @@ from django.conf import settings
 
 from repositories import utils as repo_utils
 from .utils import (parse_blog_posts, create_pelican_configs,
-    create_pelican_instance)
+                    create_pelican_instance)
 
 
 def exception_handle(func):

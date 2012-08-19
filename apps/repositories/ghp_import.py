@@ -13,6 +13,7 @@ import signal
 import sys
 import time
 
+
 __usage__ = "%prog [OPTIONS] DIRECTORY"
 
 
@@ -25,10 +26,12 @@ def _enc(text):
         text = text.encode()
     return text
 
+
 if sys.version_info >= (2, 6, 0):
     enc = _enc
 else:
     enc = lambda t: t
+
 
 def is_repo(d):
     if not os.path.isdir(d):
@@ -45,6 +48,7 @@ def is_repo(d):
         return True
     return False
 
+
 def find_repo(path):
     if is_repo(path):
         return True
@@ -55,9 +59,10 @@ def find_repo(path):
         return False
     return find_repo(parent)
 
+
 def try_rebase(remote):
     cmd = ['git', 'rev-list', '--max-count=1', 'origin/gh-pages']
-    p = sp.Popen(cmd, stdin=sp.PIPE, stdout=sp.PIPE, stderr=sp.PIPE, preexec_fn=subprocess_setup)
+    p = sp.Popen(cmd, preexec_fn=subprocess_setup)
     (rev, ignore) = p.communicate()
     if p.wait() != 0:
         return True
@@ -66,18 +71,21 @@ def try_rebase(remote):
         return False
     return True
 
+
 def get_config(key):
-    p = sp.Popen(['git', 'config', key], stdin=sp.PIPE, stdout=sp.PIPE, preexec_fn=subprocess_setup)
+    p = sp.Popen(['git', 'config', key], preexec_fn=subprocess_setup)
     (value, stderr) = p.communicate()
     return value.strip()
 
+
 def get_prev_commit():
     cmd = ['git', 'rev-list', '--max-count=1', 'gh-pages']
-    p = sp.Popen(cmd, stdin=sp.PIPE, stdout=sp.PIPE, stderr=sp.PIPE, preexec_fn=subprocess_setup)
+    p = sp.Popen(cmd, preexec_fn=subprocess_setup)
     (rev, ignore) = p.communicate()
     if p.wait() != 0:
         return None
     return rev.strip()
+
 
 def mk_when(timestamp=None):
     if timestamp is None:
@@ -85,37 +93,27 @@ def mk_when(timestamp=None):
     currtz = "%+05d" % (time.timezone / 36) # / 3600 * 100
     return "%s %s" % (timestamp, currtz)
 
+
 def start_commit(pipe, message):
     uname = get_config("user.name")
     email = get_config("user.email")
-    pipe.stdin.write(enc('commit refs/heads/gh-pages\n'))
-    pipe.stdin.write(enc('committer %s <%s> %s\n' % (uname, email, mk_when())))
-    pipe.stdin.write(enc('data %d\n%s\n' % (len(message), message)))
-    head = get_prev_commit()
-    if head:
-        pipe.stdin.write(enc('from %s\n' % head))
-    pipe.stdin.write(enc('deleteall\n'))
+
 
 def add_file(pipe, srcpath, tgtpath):
-    pipe.stdin.write(enc('M 100644 inline %s\n' % tgtpath))
-    with open(srcpath) as handle:
-        data = handle.read()
-        pipe.stdin.write(enc('data %d\n' % len(data)))
-        pipe.stdin.write(enc(data))
-        pipe.stdin.write(enc('\n'))
+    pass
+
 
 def run_import(srcdir, message):
     cmd = ['git', 'fast-import', '--date-format=raw', '--quiet']
-    pipe = sp.Popen(cmd, stdin=sp.PIPE, preexec_fn=subprocess_setup)
+    pipe = sp.Popen(cmd, preexec_fn=subprocess_setup)
     start_commit(pipe, message)
     for path, dnames, fnames in os.walk(srcdir):
         for fn in fnames:
             fpath = os.path.join(path, fn)
             add_file(pipe, fpath, os.path.relpath(fpath, start=srcdir))
-    pipe.stdin.write(enc('\n'))
-    pipe.stdin.close()
     if pipe.wait() != 0:
         sys.stdout.write(enc("Failed to process commit.\n"))
+
 
 def options():
     return [
@@ -126,6 +124,7 @@ def options():
         op.make_option('-r', dest='remote', default='origin',
             help='The name of the remote to push to. [%default]')
     ]
+
 
 def main():
     parser = op.OptionParser(usage=__usage__, option_list=options())
@@ -150,6 +149,7 @@ def main():
 
     if opts.push:
         sp.check_call(['git', 'push', opts.remote, 'gh-pages'])
+
 
 if __name__ == '__main__':
     main()
