@@ -12,7 +12,7 @@ class Process(models.Model):
     repo = models.OneToOneField('repositories.Repo')
     stage = models.CharField(max_length=255, choices=STAGE_CHOICES)
     error = models.TextField(blank=True)
-    data = models.DateTimeField(auto_now=True)
+    data = models.DateTimeField(auto_now_add=True)
 
     def __unicode__(self):
         return u'{0} in {1}: {2}'.format(self.blog, self.repo,
