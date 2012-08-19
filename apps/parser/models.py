@@ -35,3 +35,7 @@ class Process(models.Model):
     @property
     def path(self):
         return os.path.join(settings.BLOGS_ROOT, self.hash)
+
+    def update_stage(self, val):
+        self.stage = val
+        self.save()

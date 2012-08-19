@@ -1,13 +1,17 @@
 import os
 import requests
+import signal
 import simplejson
 
 from django.conf import settings
+
 from pelican import Pelican
 from pelican.settings import read_settings
+
 from subprocess import Popen
 
 from .ghp_import import run_import
+
 
 class RepoError(Exception):
     pass
@@ -96,10 +100,7 @@ def github_add_ssh_key(access_token, user, repo_name, ssh_key):
         '{0}/repos/{1}/{2}/keys?access_token={3}'.format(
             settings.GITHUB_API_HOST, user, repo_name, access_token
         ),
-        data={
-            'title': 'key for push Pelican blog generator',
-            'key': ssh_key,
-        },
+        data=simplejson.dumps(post_data_dict),
         headers={'Accept': 'application/json'}
     )
     response_dict = simplejson.loads(response_json.text)
@@ -133,14 +134,12 @@ def pelican_generate(files_path):
     content_path = os.path.join(files_path, 'content')
     conf_path = os.path.join(files_path, 'pelicanconf.py')
     output_path = os.path.join(files_path, 'output')
-    theme = os.path.join(files_path, 'pelican-theme')
     settings = read_settings(conf_path)
-
     pelican = Pelican(
         settings=settings,
         path=content_path,
         output_path=output_path,
-        theme=theme
+        theme='notmyidea'
     )
     pelican.run()
 
@@ -156,10 +155,7 @@ def git_change_branch(files_path, branch):
         raise RepoError("Can't change branch to {0}!".format(branch))
 
 
-def add_cname_in_branches(files_path, domain):
+def add_cname(files_path, domain):
     if domain is None:
         return
     add_cname_file(files_path, domain)
-    git_change_branch(files_path, 'gh-pages')
-    add_cname_file(files_path, domain)
-    git_change_branch(files_path, 'master')

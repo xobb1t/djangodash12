@@ -39,6 +39,7 @@
 
 
 {% block auth_right %}
+    <div class="b-github">
     {% if blog_source and not blog_source.is_expired and github_user %}
         <div class="b-repo" id="js-repo">
             {% if github_repo %}
@@ -56,33 +57,16 @@
     {% else %}
         <a href="javascript:void(0)" data-github="{{ github_auth_url }}" class="b-icon b-icon_github js-popover disabled" id="js-github" data-original-title="GitHub.com" data-content="At the beginning login in blog platform"></a>
     {% endif %}
+    </div>
 {% endblock %}
 
 
 {% block description %}
     {% if github_repo and blog %}
         <div class="b-import" id="js-import"><div class="progress progress-warning"><div class="bar" style="width: 1%;"></div><span class="txt">In progress</span></div></div>
-        <script type="text/javascript">
-            $(document).ready(function(){
-                $('#js-tm img').toggleClass('hide');
-                progress_interval = setInterval(fun_progress, 3000);
-            });
-        </script>
     {% else %}
         <div class="b-text">
-            <p>Get your blog formatted for Pelican python package.</p>
+            <p>We are helping you to migrate from blog platfrom to <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>-powered blog, hosted on <a href="https://github.com/" target="_blank">GitHub</a>.</p>
         </div>
     {% endif %}
 {% endblock %}
-
-
-{% if github_repo and blog %}
-    {% block extra_js %}
-        <script type="text/javascript">
-            $(document).ready(function(){
-//                $('#js-tm img').toggleClass('hide');
-//                progress_interval = setInterval(fun_progress, 3000);
-            });
-        </script>
-    {% endblock %}
-{% endif %}

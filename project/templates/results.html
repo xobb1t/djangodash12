@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+
+{% block pelican_logo %}
+    <img src="{{ STATIC_URL }}images/pelican3.png">
+{% endblock %}
+
+
+{% block text_left %}
+    {% if blog_source %}
+        Logged in as <br> {{ blog_source.username }} <br>
+    {% endif %}
+{% endblock %}
+
+
+{% block text_right %}
+    {% if github_user %}
+        Logged in as <br> {{ github_user.username }} <br>
+    {% endif %}
+{% endblock %}
+
+
+{% block auth_left %}
+    <div class="b-sblog" id="js-sblog">
+        <span class="title">Selected blog:</span>
+        <a class="btitle" href="http://{{ blog.domain }}" target="_blank">{{ blog.domain }}</a>
+    </div>
+{% endblock %}
+
+
+{% block auth_right %}
+    <div id="js-repo" class="b-repo">
+        <span class="title">Repository:</span>
+        <a href="https://github.com/{{ github_user.username }}/{{ github_repo.name }}" class="rtitle" target="_blank">{{ github_user.username }}/{{ github_repo.name }}</a>
+    </div>
+{% endblock %}
+
+
+{% block description %}
+    <div class="b-text">
+        {% if process.error %}
+            <p class="align-center">Result: <span class="red">error!</span></p>
+            <p>Error description: <br>
+                <div class="listerror">
+                    {{ process.error|linebreaksbr }}
+                </div>
+            </p>
+        {% else %}
+            <p class="align-center">Result: <span class="green">ok</span></p>
+        {% endif %}
+    </div>
+{% endblock %}
