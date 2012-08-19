@@ -39,6 +39,7 @@
 
 
 {% block auth_right %}
+    <div class="b-github">
     {% if blog_source and not blog_source.is_expired and github_user %}
         <div class="b-repo" id="js-repo">
             {% if github_repo %}
@@ -56,6 +57,7 @@
     {% else %}
         <a href="javascript:void(0)" data-github="{{ github_auth_url }}" class="b-icon b-icon_github js-popover disabled" id="js-github" data-original-title="GitHub.com" data-content="At the beginning login in blog platform"></a>
     {% endif %}
+    </div>
 {% endblock %}
 
 

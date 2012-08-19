@@ -393,3 +393,7 @@ a:hover {
 .cell-m .import {
   margin-top: 50px;
 }
+.b-text .listerror {
+  padding-left: 10px;
+  font-size: 16px;
+}
