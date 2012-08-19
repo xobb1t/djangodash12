@@ -15,7 +15,7 @@ LINKS =  (('Pelican', 'http://docs.getpelican.com/'),
           ('Jinja2', 'http://jinja.pocoo.org'),)
 
 # Social widget
-SOCIAL = (('GitHub', 'http://github/{{ repo.user.username }}'),)
+SOCIAL = (('GitHub', 'http://github.com/{{ repo.user.username }}'),)
 
 DEFAULT_PAGINATION = False
 

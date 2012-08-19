@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}{{ article.title }}{%endblock%}
+{% block content %}  
+<section class="b-posts">
+  <article class="b-post">
+    <header>
+      <h1 class="entry-title"><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h1>
+      <span class="date">{{ article.locale_date }}</span>
+    </header>
+    <section class="post-content">
+      {{ article.content }}
+    </section>
+    <footer>
+      <div class="b-tags">
+        {% if article.tags %}
+          Tags:
+          {% for tag in article.tags %}<a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>{% if loop.last %}.{% else %}, {% endif %}{% endfor %}</p>
+        {% endif %}
+      </div>
+      {% if article.author %}
+      <div class="author">
+        By <a href="{{ SITEURL }}/{{ article.author.url }}">{{ article.author }}</a>
+      </div>
+      {% endif %}
+    </footer>
+  </article>
+</section><!-- class="b-posts" -->
+{% endblock %}

@@ -158,6 +158,38 @@ a {
 .social a[href*="github.com"] {
   background: url('../images/github.png') no-repeat 20px center;
 }
+
+.pagination {
+  padding: 10px;
+  -webkit-border-radius: 14px;
+  -moz-border-radius: 14px;
+  -ms-border-radius: 14px;
+  border-radius: 14px;
+  background-color: #ddd;
+}
+.pagination {
+  overflow: hidden;
+}
+.pagination li {
+  float: left;
+}
+.pagination a {
+  display: block;
+  height: 20px;
+  line-height: 20px;
+  min-width: 15px;
+  padding: 0 2px;
+  text-align: center;
+  text-decoration: none;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  border-radius: 3px;
+}
+.pagination .active a {
+  background-color: #444444;
+  color: #DDDDDD;
+}
 /*.text block*/
 
 .post-content {
@@ -185,7 +217,7 @@ a {
 .post-content ul,
 .post-content ol {
   padding: 0;
-  margin: 0 0 10px 14px;
+  margin: 0 0 10px 30px;
 }
 .post-content ul ul,
 .post-content ul ol,
