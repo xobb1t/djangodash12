@@ -6,14 +6,10 @@ from django.conf import settings
 
 from pelican import Pelican
 from pelican.settings import read_settings
-from pelican.tools.pelican_themes import _THEMES_PATH
 
 from subprocess import Popen
 
 from .ghp_import import run_import
-
-
-global _THEMES_PATH
 
 
 class RepoError(Exception):
@@ -138,12 +134,11 @@ def pelican_generate(files_path):
     conf_path = os.path.join(files_path, 'pelicanconf.py')
     output_path = os.path.join(files_path, 'output')
     settings = read_settings(conf_path)
-    _THEMES_PATH = files_path
     pelican = Pelican(
         settings=settings,
         path=content_path,
         output_path=output_path,
-        theme='pelican-theme'
+        theme='notmyidea'
     )
     pelican.run()
 
