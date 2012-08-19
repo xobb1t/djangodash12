@@ -98,3 +98,9 @@ def github_add_ssh_key(access_token, user, repo_name, ssh_key):
     if 'id' not response_dict:
         raise RepoError("Don't add ssh-key in repo")
     return response_dict['id']
+
+
+def git_remote_add(files_path, ssh_url):
+    cmd = ['git', 'remote', 'add', 'origin', ssh_url]
+    if Popen(cmd, cwd=files_path).wait():
+        raise RepoError("Can't add git remote!")
