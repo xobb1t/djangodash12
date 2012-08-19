@@ -143,6 +143,8 @@ def git_change_branch(files_path, branch):
 
 
 def add_cname_in_branches(files_path, domain):
+    if domain is None:
+        return
     add_cname_file(files_path, domain)
     git_change_branch(files_path, 'gh-pages')
     add_cname_file(files_path, domain)
