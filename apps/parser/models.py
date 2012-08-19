@@ -9,15 +9,10 @@ from django.conf import settings
 
 class Process(models.Model):
 
-    STAGE_CHOICES = (
-        ('start', 'Start'),
-        ('end', 'End'),
-    )
-
     blog = models.OneToOneField('blogs.Blog')
     repo = models.OneToOneField('repositories.Repo')
-    stage = models.CharField(max_length=255, choices=STAGE_CHOICES)
     error = models.TextField(blank=True)
+    stage = models.PositiveIntegerField()
     date = models.DateTimeField(auto_now_add=True)
     hash = models.CharField(max_length=40)
 

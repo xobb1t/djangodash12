@@ -175,6 +175,12 @@ a {
 .pagination li {
   float: left;
 }
+.pagination .prev {
+  margin-right: 5px;
+}
+.pagination .next {
+  margin-right: 5px;
+}
 .pagination a {
   display: block;
   height: 20px;
