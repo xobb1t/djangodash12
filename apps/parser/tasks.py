@@ -46,7 +46,7 @@ def work_on(process):
     )
     repo_utils.git_remote_add(process.path, ssh_url)
     repo_utils.git_push_origin(process.path)
-    #repo_utils.github_pages_import(process.path)
+    repo_utils.github_pages_import(process.path)
     repo_utils.github_remove_ssh_key(
         repo.user.access_token, repo.user.username, repo.name, key_id
     )
