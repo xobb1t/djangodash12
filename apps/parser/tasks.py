@@ -20,6 +20,7 @@ def exception_handle(func):
     return decorator
 
 
+@exception_handle
 @task
 def work_on(process):
     process.update_stage(1)
@@ -45,8 +46,6 @@ def work_on(process):
     repo_utils.add_cname(process.path, repo.cname)
     repo_utils.git_initial_commit(process.path)
     process.update_stage(55)
-    repo_utils.pelican_generate(process.path)
-    process.update_stage(60)
     ssh_url = repo_utils.github_create_repo(repo.user.access_token, repo.name)
     process.update_stage(70)
     key_id = repo_utils.github_add_ssh_key(
@@ -58,7 +57,6 @@ def work_on(process):
     process.update_stage(80)
     repo_utils.git_push_origin(process.path)
     process.update_stage(85)
-    repo_utils.github_pages_import(process.path)
     process.update_stage(95)
     repo_utils.github_remove_ssh_key(
         repo.user.access_token, repo.user.username, repo.name, key_id
