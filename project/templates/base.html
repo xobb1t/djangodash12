@@ -33,7 +33,8 @@
           </section><!-- class="cell" -->
           <section class="cell cell-m align-center" id="js-tm">
 {% block pelican_logo %}
-    <img src="{{ STATIC_URL }}images/pelican.png" alt="">  
+    <img src="{{ STATIC_URL }}images/pelican.png" alt="">
+    <img src="{{ STATIC_URL }}images/pelican2.png" alt="" class="import hide">
 {% endblock %}
           </section><!-- class="cell" -->
           <section class="cell cell-r" id="js-tr">
@@ -50,13 +51,7 @@
             </div>
           </section><!-- class="cell" -->
           <section class="cell cell-m" id="js-bm">
-            <div class="b-text">
-{% block description %}
-    <p>
-        Get your blog formatted for Pelican python package.
-    </p>
-{% endblock %}
-            </div>
+{% block description %}{% endblock %}
           </section><!-- class="cell" -->
           <section class="cell cell-r" id="js-br">
             <div class="b-github">
@@ -72,5 +67,6 @@
   <script type="text/javascript" src="{{ STATIC_URL }}js/libs/bootstrap.js"></script>
   <script type="text/javascript" src="{{ STATIC_URL }}js/libs/jquery.sselect.js"></script>
   <script type="text/javascript" src="{{ STATIC_URL }}js/script.js"></script>
+{% block extra_js %}{% endblock %}
 </body>
 </html>
