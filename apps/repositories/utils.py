@@ -1,9 +1,12 @@
+import os
 from subprocess import Popen
 
 import requests
 import simplejson
 
 from django.conf import settings
+
+from .ghp_import import run_import
 
 
 class RepoError(Exception):
@@ -60,7 +63,8 @@ def git_initial_commit(files_path):
 
 
 def github_pages_import(files_path):
-    if Popen(['ghp-import', 'output'], cwd=files_path).wait():
+    output = os.path.join(files_path, 'output')
+    if run_import(output, 'Initial commit'):
         raise RepoError("Can't import pages for ghp-import")
 
 
