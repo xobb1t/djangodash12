@@ -25,7 +25,6 @@ def exception_handle(func):
 def work_on(process):
     process.update_stage(1)
 
-    blog = process.blog
     repo = process.repo
 
     # Create pelican environemnt

@@ -54,7 +54,7 @@ def parse_blog_posts(process, max_pages, page_token=None, page_size=20):
 
     max_pages -= 1
     if not max_pages <= 0 and nextPageToken is not None:
-        get_blog_posts(process, max_pages, nextPageToken, page_size)
+        parse_blog_posts(process, max_pages, nextPageToken, page_size)
 
 
 def get_post_slug(domain, full_url):

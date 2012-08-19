@@ -1,5 +1,4 @@
 import os
-import stat
 from subprocess import Popen
 
 from django.conf import settings

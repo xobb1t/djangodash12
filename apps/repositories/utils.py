@@ -1,6 +1,5 @@
 import os
 import requests
-import signal
 import simplejson
 
 from django.conf import settings
