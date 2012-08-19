@@ -15,6 +15,7 @@ requirements_file: requirements/gondor.txt
 on_deploy:
     - manage.py syncdb --migrate --noinput
     - manage.py collectstatic --noinput
+    - scripts/make_keys.py
 
 # URLs which should be served by Gondor mapping to a filesystem location
 # relative to your writable storage area.
