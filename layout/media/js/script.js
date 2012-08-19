@@ -8,9 +8,9 @@ $(document).ready(function(){
       $('li:first', block).hide();
     }
   });
-  $('#js-save form').submit(function() {
+  $('#js-sblog form').submit(function() {
     var $this = $(this);
-    var $block = $this.closest('#js-save');
+    var $block = $this.closest('#js-sblog');
     var action = $this.data('action');
     var data_form = $this.serialize();
     // $.ajax({
@@ -19,12 +19,12 @@ $(document).ready(function(){
     //   data: data_form,
     //   success: function(data){
     //     $block.html(data.content);
-    //     $('.col-r disabled').removeClass('disabled');
+    //     $('#js-tr .disabled, #js-br .disabled').removeClass('disabled');
     //     $('#js-github').attr('href', data.githab);
     //     $('#js-github').attr({'data-content': 'Sign in via OAuth2 protocol'});
     //   }
     // });
-    $('.col-r .disabled').removeClass('disabled');
+    $('#js-tr .disabled, #js-br .disabled').removeClass('disabled');
     $('#js-github').attr({'href': 'data.githab'});
     $('#js-github').attr({'data-content': 'Sign in via OAuth2 protocol'});
     return false;
