@@ -3,3 +3,11 @@ South==0.7.6
 Pillow==1.7.7
 requests==0.13.6
 simplejson==2.6.1
+
+#CELERY AND REQUIREMENTS
+kombu==1.4.1
+amqplib==1.0.2
+anyjson==0.3.1
+celery==2.3.3
+django-celery==2.3.3
+redis==2.4.9
