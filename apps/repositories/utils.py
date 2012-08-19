@@ -92,7 +92,7 @@ def github_add_ssh_key(access_token, user, repo_name, ssh_key):
         '{0}/repos/{1}/{2}/keys?access_token={3}'.format(
             settings.GITHUB_API_HOST, user, repo_name, access_token
         ),
-        data = {
+        data={
             'title': 'key for push Pelican blog generator',
             'key': ssh_key,
         },
