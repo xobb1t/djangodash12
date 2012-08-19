@@ -3,49 +3,9 @@
 <section class="b-posts">
   {% if articles %}
     {% for article in (articles_page.object_list if articles_page else articles) %}
-      <article class="b-post">
-        <header>
-          <h1 class="entry-title"><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h1>
-          <span class="date">{{ article.locale_date }}</span>
-        </header>
-        <section class="post-content">
-          {{ article.summary }}
-        </section>
-        <footer>
-          <div class="b-tags">
-            {% if article.tags %}
-              Tags:
-              {% for tag in article.tags %}<a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>{% if loop.last %}.{% else %}, {% endif %}{% endfor %}</p>
-            {% endif %}
-          </div>
-          {% if article.author %}
-          <div class="author">
-            By <a href="{{ SITEURL }}/{{ article.author.url }}">{{ article.author }}</a>
-          </div>
-          {% endif %}
-        </footer>
-      </article>
+      {% include 'article_one.html' %}
     {% endfor %}
-    {% if articles_page and articles_paginator.num_pages > 1 %}
-    <div class="pagination">
-      <ul>
-      {% if articles_page.has_previous() %}
-      {% set num = articles_page.previous_page_number() %}
-      <li class="prev"><a href="{{ SITEURL }}/{{ page_name }}{{ num if num > 1 else '' }}.html">&larr; Previous</a></li>
-      {% else %}
-      <li class="prev disabled"><a href="#">&larr; Previous</a></li>
-      {% endif %}
-      {% for num in range( 1, 1 + articles_paginator.num_pages ) %}
-      <li class="{{ 'active' if num == articles_page.number else '' }}"><a href="{{ SITEURL }}/{{ page_name }}{{ num if num > 1 else '' }}.html">{{ num }}</a></li>
-      {% endfor %}
-      {% if articles_page.has_next() %}
-      <li class="next"><a href="{{ SITEURL }}/{{ page_name }}{{ articles_page.next_page_number() }}.html">Next &rarr;</a></li>
-      {% else %}
-      <li class="next disabled"><a href="#">&rarr; Next</a></li>
-      {% endif %}
-      </ul>
-    </div>
-    {% endif %}
+    {% include 'pagination.html' %}
   {% endif %}
 </section><!-- class="b-posts" -->
 {% endblock %}

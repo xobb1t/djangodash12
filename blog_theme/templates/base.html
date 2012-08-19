@@ -20,7 +20,7 @@
   <div class="l-page">
     <header class="l-header">
       <div class="wrap">
-        <h1 class="b-title"><a href="#?">BlogTitle</a></h1>  
+        <h1 class="b-title"><a href="/">BlogTitle</a></h1>  
       </div>
     </header>
     <section class="l-middle">
@@ -48,8 +48,7 @@
 
             {% for name, link in SOCIAL %}
               <li>
-                <a href="{{ link }}" target="_blank">name</a>
-                <a href="{{ link }}">{{ name }}</a>
+                <a href="{{ link }}" target="_blank">{{ name }}</a>
               </li>
             {% endfor %}
           </ul>
@@ -60,7 +59,7 @@
             <span class="title">Blogroll</span>
             <ul class="list">
               {% for name, link in LINKS %}
-              <li><a href="{{ link }}">{{ name }}</a></li>
+              <li><a href="{{ link }}" target="_blank">{{ name }}</a></li>
               {% endfor %}
             </ul>
           </div>
