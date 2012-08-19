@@ -129,3 +129,21 @@ def pelican_generate(files_path):
     cmd = ['pelican', 'content', '-s', 'pelicanconf.py']
     if Popen(cmd, cwd=files_path).wait():
         raise RepoError("Can't generate blog!")
+
+
+def add_cname_file(files_path, domain):
+    cmd = ['echo', domain, '>', 'CNAME']
+    if Popen(cmd, cwd=files_path).wait():
+        raise RepoError("Can't add cname file in branch!")
+
+
+def git_change_branch(files_path, branch):
+    if Popen(['git', 'checkout', branch], cwd=files_path).wait():
+        raise RepoError("Can't change branch to {0}!".format(branch))
+
+
+def add_cname_in_branches(files_path, domain):
+    add_cname_file(files_path, domain)
+    git_change_branch(files_path, 'gh-pages')
+    add_cname_file(files_path, domain)
+    git_change_branch(files_path, 'master')
