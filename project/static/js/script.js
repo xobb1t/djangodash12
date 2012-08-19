@@ -40,7 +40,7 @@ $(document).ready(function(){
     $block.html(loader);
     var action = $this.data('action');
     var data_form = $this.serialize();
-    var btnimport = '<div class="b-import" id="js-import"><a href="#?" class="btn btn-warning btn-large" data-action="/import/">IMPORT</a><div class="progress progress-warning hide"><div class="bar" style="width: 1%;"></div><span class="txt">In progress</span></div></div>';
+    var btnimport = '<div class="b-import" id="js-import"><a href="#?" class="btn btn-warning btn-large" data-action="/parser/start/">IMPORT</a><div class="progress progress-warning hide"><div class="bar" style="width: 1%;"></div><span class="txt">In progress</span></div></div>';
 
     $.ajax({
       url: action,
@@ -66,15 +66,13 @@ $(document).ready(function(){
     });
   }
   function fun_progress() {
-    // var action = '/progress/';
-    // $.ajax({
-    //   url: action,
-    //   type: "POST",
-    //   success: function(data){ 
-    //   }
-    // });
-    var n = 20;
-    $('#js-import .bar').animate({'width': n + "%"});
+    var action = '/parser/start/';
+    $.ajax({
+      url: action,
+      type: "POST",
+      success: function(data){
+        $('#js-import .bar').animate({'width': data + "%"});
+      }
+    });
   }
-
 });
