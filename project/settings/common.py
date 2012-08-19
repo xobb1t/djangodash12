@@ -189,3 +189,4 @@ PARSE_PAGES_COUNT = 20
 djcelery.setup_loader()
 
 BLOGS_ROOT = os.path.join(PROJECT_ROOT, 'blogs')
+KEYS_ROOT = os.path.join(PACKAGE_ROOT, 'keys')
