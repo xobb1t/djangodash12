@@ -1,7 +1,7 @@
 from celery.task import task
 from django.conf import settings
 
-from .utils import parse_blog_posts
+from .utils import parse_blog_posts, create_pelikan_configs
 
 
 def exception_handle(func):
@@ -19,4 +19,5 @@ def exception_handle(func):
 def work_on(process):
     process.stage = 'start'
     parse_blog_posts(process, settings.PARSE_PAGES_COUNT)
+    create_pelikan_configs(process)
     process.stage = 'end'

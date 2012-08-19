@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  var loader = '<img src="media/images/loader.gif" alt="loader" class="loader">'
+  var loader = '<img src="' + __STATIC_URL__ + 'images/loader.gif" alt="loader" class="loader">'
   $('.js-popover').popover({
     placement: 'top'
   });
@@ -14,18 +14,19 @@ $(document).ready(function(){
     var $block = $this.closest('#js-sblog');
     $block.html(loader);
     var action = $this.data('action');
+    var github_url = $('#js-github').data('github');
     var data_form = $this.serialize();
-    // $.ajax({
-    //   url: action,
-    //   type: "POST",
-    //   data: data_form,
-    //   success: function(data){
-    //     $block.html(data.content);
-    //     $('#js-tr .disabled, #js-br .disabled').removeClass('disabled');
-    //     $('#js-github').attr('href', data.githab);
-    //     $('#js-github').attr({'data-content': 'Sign in via OAuth2 protocol'});
-    //   }
-    // });
+    $.ajax({
+      url: action,
+      type: "POST",
+      data: data_form,
+      success: function(data){
+        $block.html(data);
+        $('#js-tr .disabled, #js-br .disabled').removeClass('disabled');
+        $('#js-github').attr('href', github_url);
+        $('#js-github').attr({'data-content': 'Sign in via OAuth2 protocol'});
+      }
+    });
     $('#js-tr .disabled, #js-br .disabled').removeClass('disabled');
     $('#js-github').attr({'href': 'data.githab'});
     $('#js-github').attr({'data-content': 'Sign in via OAuth2 protocol'});

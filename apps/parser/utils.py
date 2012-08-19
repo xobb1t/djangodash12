@@ -93,3 +93,27 @@ def convert_blog_post(post, slug, file_path):
     })
     with open(file_path, 'w') as f:
         f.write(result.encode('utf-8'))
+
+
+def create_pelikan_configs(process):
+    blog = process.blog
+    repo = process.repo
+    if repo.cname:
+        site_url = repo.cname
+    else:
+        site_url = '{0}.github.com/{1}'.format(repo.user.username, repo.name)
+    result = render_to_string('parser/pelicanconf.py_tpl', {
+        'blog': blog, 'repo': repo, 'site_url': site_url
+    })
+    file_path = os.path.join(process.path, 'pelicanconf.py_tpl')
+    with open(file_path, 'w') as f:
+        f.write(result.encode('utf-8'))
+
+    result = render_to_string('parser/publishconf.py_tpl', {
+        'blog': blog, 'repo': repo, 'site_url': site_url,
+    })
+    file_path = os.path.join(process.path, 'publishconf.py')
+    with open(file_path, 'w') as f:
+        f.write(result.encode('utf-8'))
+
+
