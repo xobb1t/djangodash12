@@ -26,7 +26,7 @@ if "GONDOR_DATABASE_URL" in os.environ:
         }
     }
 
-SITE_ID = 1 # set this to match your Sites setup
+SITE_ID = 1  # set this to match your Sites setup
 
 DATA_DIR = os.environ["GONDOR_DATA_DIR"]
 
@@ -43,8 +43,8 @@ else:
     with open(SECRET_KEY_FILE) as f:
         SECRET_KEY = f.read()
 
-MEDIA_URL = "/site_media/media/" # make sure this maps inside of site_media_url
-STATIC_URL = "/site_media/static/" # make sure this maps inside of site_media_url
+MEDIA_URL = "/site_media/media/"
+STATIC_URL = "/site_media/static/"
 ADMIN_MEDIA_PREFIX = STATIC_URL + "admin/"
 
 FILE_UPLOAD_PERMISSIONS = 0640
