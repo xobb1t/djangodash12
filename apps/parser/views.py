@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import get_object_or_None
+from django.shortcuts import get_object_or_404
 
 from blogs.models import Blog
 from repo.models import Repo
