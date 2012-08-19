@@ -2,22 +2,42 @@
 
 
 {% block text_left %}
-    Authorize in <br><i>your Blog</i><br>
+    {% if blog_source and not blog_source.is_expired %}
+        Logged in as <br> {{ blog_source.username }} <br>
+    {% else %}
+        Authorize in <br><i>your Blog</i><br>
+    {% endif %}
 {% endblock %}
 
 
 {% block text_right %}
-    Authorize in <br><i>your GitHub</i><br>
+    {% if blog_source and not blog_source.is_expired and github_user %}
+        Logged in as <br> {{ github_user.username }} <br>
+    {% else %}
+        Authorize in <br><i>your GitHub</i><br>
+    {% endif %}
 {% endblock %}
 
 
 {% block auth_left %}
-    <a href="{{ google_auth_url }}" class="b-icon b-icon_bloger js-popover" data-original-title="Blogger.com" data-content="Sign in via OAuth2 protocol"></a>
-    <a href="#?" class="b-icon b-icon_tumblr js-popover disabled" data-original-title="tumblr.com" data-content="Coming soon..."></a>
-    <a href="#?" class="b-icon b-icon_press js-popover disabled" data-original-title="WordPress.com" data-content="Coming soon..."></a>
+    {% if blog_source and not blog_source.is_expired %}
+        {% with blog_form as form %}
+            {% include 'blogs/blog_form.html' %}
+        {% endwith %}
+    {% else %}
+        <a href="{{ google_auth_url }}" class="b-icon b-icon_bloger js-popover" data-original-title="Blogger.com" data-content="Sign in via OAuth2 protocol"></a>
+        <a href="#?" class="b-icon b-icon_tumblr js-popover disabled" data-original-title="tumblr.com" data-content="Coming soon..."></a>
+        <a href="#?" class="b-icon b-icon_press js-popover disabled" data-original-title="WordPress.com" data-content="Coming soon..."></a>
+    {% endif %}
 {% endblock %}
 
 
 {% block auth_right %}
-    <a href="javascript:void(0)" class="b-icon b-icon_github js-popover disabled" id="js-github" data-original-title="GitHub.com" data-content="At the beginning login in blog platform"></a>
+    {% if blog_source and not blog_source.is_expired and github_user %}
+        {% with repo_form as form %}
+            {% include 'repositories/repository_form.html' %}
+        {% endwith %}
+    {% else %}
+        <a href="javascript:void(0)" class="b-icon b-icon_github js-popover disabled" id="js-github" data-original-title="GitHub.com" data-content="At the beginning login in blog platform"></a>
+    {% endif %}
 {% endblock %}
