@@ -31,6 +31,6 @@ project/site_media
 project/secret.txt
 project/sqlite3.db
 project/blogs
-project/scripts/keys
+scripts/keys
 pelican-test
 Thumbs.db
