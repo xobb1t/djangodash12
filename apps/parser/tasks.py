@@ -37,7 +37,7 @@ def work_on(process):
     repo_utils.github_pages_import(process.path)
     ssh_url = repo_utils.github_create_repo(repo.user.access_token, repo.name)
     key_id = repo_utils.github_add_ssh_key(
-        repo.user.access_token, repo.user.username
+        repo.user.access_token, repo.user.username,
         repo.name, public_key
     )
     repo_utils.git_remote_add(process.path, ssh_url)
