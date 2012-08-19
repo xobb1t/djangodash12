@@ -105,7 +105,7 @@ def create_pelikan_configs(process):
     result = render_to_string('parser/pelicanconf.py_tpl', {
         'blog': blog, 'repo': repo, 'site_url': site_url
     })
-    file_path = os.path.join(process.path, 'pelicanconf.py_tpl')
+    file_path = os.path.join(process.path, 'pelicanconf.py')
     with open(file_path, 'w') as f:
         f.write(result.encode('utf-8'))
 
