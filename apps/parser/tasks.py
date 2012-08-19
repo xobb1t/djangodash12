@@ -26,8 +26,8 @@ def work_on(process):
     repo = process.repo
 
     # Create pelican environemnt
-    parse_blog_posts(process, settings.PARSE_PAGES_COUNT)
     create_pelican_configs(process)
+    parse_blog_posts(process, settings.PARSE_PAGES_COUNT)
 
     public_key_path = os.path.join(settings.KEYS_ROOT, 'id_rsa.pub')
     with open(public_key_path) as f:

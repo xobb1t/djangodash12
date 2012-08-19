@@ -2,12 +2,14 @@ import os
 import re
 import requests
 import slumber
+from shutil import copytree
+from StringIO import StringIO
 
 from datetime import datetime
 from django.conf import settings
 from django.template.loader import render_to_string
+
 from html2text import html2text as html2text_orig
-from StringIO import StringIO
 
 
 link_re = re.compile(r"https?://([^ \n]+\n)+[^ \n]+", re.MULTILINE)
@@ -102,6 +104,11 @@ def create_pelican_configs(process):
         site_url = repo.cname
     else:
         site_url = '{0}.github.com/{1}'.format(repo.user.username, repo.name)
+    pelican_src = os.path.join(settings.PACKAGE_ROOT, 'pelican')
+    try:
+        copytree(pelican_src, process.path)
+    except OSError:
+        pass
     result = render_to_string('parser/pelicanconf.py_tpl', {
         'blog': blog, 'repo': repo, 'site_url': site_url
     })
