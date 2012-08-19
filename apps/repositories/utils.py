@@ -133,12 +133,14 @@ def pelican_generate(files_path):
     content_path = os.path.join(files_path, 'content')
     conf_path = os.path.join(files_path, 'pelicanconf.py')
     output_path = os.path.join(files_path, 'output')
+    theme = os.path.join(files_path, 'pelican-theme')
     settings = read_settings(conf_path)
 
     pelican = Pelican(
         settings=settings,
         path=content_path,
-        output_path=output_path
+        output_path=output_path,
+        theme=theme
     )
     pelican.run()
 
