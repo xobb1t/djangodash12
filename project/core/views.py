@@ -24,7 +24,9 @@ def home(request):
     })
 
 
-def logout(self):
+def logout(request):
     request.session.pop('blog_id', None)
+    request.session.pop('blog_source_id', None)
     request.session.pop('repo_id', None)
+    request.session.pop('repo_user_id', None)
     return redirect('home')

@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load url from future %}
 
 
 {% block pelican_logo %}
@@ -44,7 +45,7 @@
     <div class="b-text">
         {% if process.error %}
             <p class="align-center">Result: <span class="red">error!</span></p>
-            <p>Error description: <br>
+            <p>Error description:
                 <div class="listerror">
                     {{ process.error|linebreaksbr }}
                 </div>
@@ -52,5 +53,8 @@
         {% else %}
             <p class="align-center">Result: <span class="green">ok</span></p>
         {% endif %}
+
+        <p></p>
+        <p class="align-center"><a href="{% url 'logout' %}">Try again?</a></p>
     </div>
 {% endblock %}
