@@ -70,7 +70,7 @@ def create_pelican_instance(process):
     except OSError:
         pass
     pelican_src = os.path.join(settings.PACKAGE_ROOT, 'pelican')
-    if Popen(['cp', '-r', pelican_src, process.path]).wait():
+    if Popen(['cp', '-r', pelican_src, '/*', process.path]).wait():
         pass
 
 
