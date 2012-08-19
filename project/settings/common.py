@@ -183,5 +183,6 @@ GOOGLE_CALLBACK_URL = 'http://lz367.o1.gondor.io/blogs/oauth2callback'
 GOOGLE_API_ROOT = 'https://www.googleapis.com/oauth2/v1/'
 BLOGGER_API_ROOT = 'https://www.googleapis.com/blogger/v3/'
 
+PARSE_PAGES_COUNT = 20
 
 djcelery.setup_loader()
