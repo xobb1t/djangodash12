@@ -1,4 +1,5 @@
 import os
+import djcelery
 
 
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
@@ -114,6 +115,8 @@ INSTALLED_APPS = (
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "south",
+    "djcelery",
+    "djkombu",
 
     "blogs",
     "repositories",
@@ -180,3 +183,6 @@ GOOGLE_CALLBACK_URL = 'http://lz367.o1.gondor.io/blogs/oauth2callback'
 
 GOOGLE_API_ROOT = 'https://www.googleapis.com/oauth2/v1/'
 BLOGGER_API_ROOT = 'https://www.googleapis.com/blogger/v3/'
+
+
+djcelery.setup_loader()
