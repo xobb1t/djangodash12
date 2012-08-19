@@ -36,5 +36,5 @@ class Process(models.Model):
         super(Process, self).save(*args, **kwargs)
 
     @property
-    def result_path(self):
-        return os.path.join(settings.DATA_DIR, 'blogs', self.hash)
+    def path(self):
+        return os.path.join(settings.BLOGS_ROOT, 'blogs', self.hash)
