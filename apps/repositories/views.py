@@ -63,7 +63,7 @@ def save_repo(request):
         cname = form.cleaned_data.get('cname', '')
         repo, created = Repo.objects.get_or_create(
             user=repo_user, blog=blog,
-            name=name, cname=name
+            name=name, cname=cname
         )
         request.session['repo_id'] = repo.pk
         return render(request, 'repositories/repository_saved.html', {

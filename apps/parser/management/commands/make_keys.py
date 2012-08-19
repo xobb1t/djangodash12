@@ -10,7 +10,7 @@ class Command(BaseCommand):
     help = 'makes ssh keys'
 
     def handle(self, *args, **kwargs):
-        keys_dir = os.path.join(settings.PACKAGE_ROOT, 'scripts', 'keys')
+        keys_dir = settings.KEYS_ROOT
         try:
             os.makedirs(keys_dir)
         except OSError:

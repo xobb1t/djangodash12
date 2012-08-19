@@ -17,8 +17,8 @@ class Process(models.Model):
     hash = models.CharField(max_length=40)
 
     def __unicode__(self):
-        return u'{0} in {1}: {2}'.format(
-            self.blog, self.repo, self.get_stage_display()
+        return u'{0} in {1}: {2}%'.format(
+            self.blog, self.repo, self.stage
         )
 
     def save(self, *args, **kwargs):
