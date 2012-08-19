@@ -79,6 +79,7 @@ def github_create_repo(access_token, repo_name):
     response_dict = simplejson.loads(response_json.text)
     if 'name' in response_dict:
         raise RepoError("Don't create repo in github")
+    return response_dict['ssh_url']
 
 
 def github_add_ssh_key(access_token, user, repo_name, ssh_key):
@@ -97,3 +98,24 @@ def github_add_ssh_key(access_token, user, repo_name, ssh_key):
     if 'id' not response_dict:
         raise RepoError("Don't add ssh-key in repo")
     return response_dict['id']
+
+
+def git_remote_add(files_path, ssh_url):
+    cmd = ['git', 'remote', 'add', 'origin', ssh_url]
+    if Popen(cmd, cwd=files_path).wait():
+        raise RepoError("Can't add git remote!")
+
+
+def git_push_origin(files_path):
+    if Popen(['git', 'push', '-u', 'origin'], cwd=files_path).wait():
+        raise RepoError("Can't push into git remote repo!")
+
+
+def github_remove_ssh_key(access_token, user, repo_name, key_id):
+    response = requests.delete(
+        '{0}/repos/{1}/{2}/keys/{3}?access_token={4}'.format(
+            settings.GITHUB_API_HOST, user, repo_name, key_id, access_token
+        )
+    )
+    if response.status_code != 204:
+        raise RepoError("Can't remove ssh key!")
