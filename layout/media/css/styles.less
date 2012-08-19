@@ -120,6 +120,7 @@ a {
   margin-bottom: 4px;
   font-size: 14px;
   font-weight: 600;
+  padding-top: 4px;
 }
 .b-sblog .b-sselect {
   margin-bottom: 25px;
@@ -220,6 +221,7 @@ a {
   margin-right: 5px;
   line-height: 29px;
   width: 80px;
+  text-align: right;
 }
 .b-field label a {
   text-decoration: none;
@@ -246,8 +248,23 @@ a {
   border-color: #6c7676;
 }
 
+.b-repo {
+  text-align: center;
+}
 .b-repo p {
   margin-bottom: 13px;
+}
+.b-repo .title {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 14px;
+}
+.b-repo .rtitle {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  padding-top: 4px;
 }
 
 .b-import {
@@ -258,6 +275,49 @@ a {
   padding: 14px 24px;
   width: 380px;
   text-decoration: none;
+  font-weight: 600;
+}
+
+.b-import .progress {
+  width: 430px;
+}
+.b-import .progress,
+.b-import .progress .bar {
+  height: 48px;
+  position: relative;
+}
+.b-import .progress .bar  {
+  z-index: 2;
+  -webkit-border-radius: 4px 0 0 4px;
+  -moz-border-radius: 4px 0 0 4px;
+  -ms-border-radius: 4px 0 0 4px;
+  border-radius: 4px 0 0 4px;
+}
+.b-import .progress .txt {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 16px;
+  color: #777;
+}
+.hide {
+  position: absolute;
+  left: -4000px;
+  top: -40000px;
+}
+.loader {
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  z-index: 12;
+  margin: -15px 0 0 -15px;
+}
+.red {
+  color: #ff0000;
+  font-weight: 600;
+}
+.green {
+  color: #00ff00;
   font-weight: 600;
 }
 /*global*/
@@ -308,4 +368,7 @@ a {
 }
 .b-content .cell {
   height: 100px;
+}
+.cell-m .import {
+  margin-top: 50px;
 }
