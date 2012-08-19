@@ -1,0 +1,2 @@
+#!/bin/bash
+ssh -o "StrictHostKeyChecking no" -i $KEYS_ROOT/id_rsa $1 $2

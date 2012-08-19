@@ -29,7 +29,7 @@ def work_on(process):
     parse_blog_posts(process, settings.PARSE_PAGES_COUNT)
     create_pelikan_configs(process)
 
-    public_key_path = os.path.join(settings.KEY_ROOT, 'id_rsa.pub')
+    public_key_path = os.path.join(settings.KEYS_ROOT, 'id_rsa.pub')
     with open(public_key_path) as f:
         public_key = f.read()
     repo_utils.git_init_repo(process.path)
