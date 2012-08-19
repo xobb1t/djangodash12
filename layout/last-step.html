@@ -18,45 +18,47 @@
   <script type="text/javascript" src="media/js/libs/modernizr-2.5.3.min.js"></script>
   <script type="text/javascript" src="media/js/libs/less-1.3.0.min.js"></script>
 </head>
-<body>
-  <div class="l-page">
+<body>  <div class="l-page">
     <div class="l-wrap">
-      <div class="l-container">
+      <div class="l-container clearfix">
         <header class="b-header clearfix">
           <section class="cell cell-l" id="js-tl">
             <div class="b-htext">
-              Authorize in <br><i>your Blog</i><br>
+              Logged in as <br> email <br>
               <i class="arrow"></i>
             </div>    
           </section><!-- class="cell" -->
           <section class="cell cell-m align-center" id="js-tm">
-            <img src="media/images/pelican.png" alt="">  
+            <img src="media/images/pelican3.png" alt="">  
           </section><!-- class="cell" -->
           <section class="cell cell-r" id="js-tr">
-            <div class="b-htext disabled">
-              Authorize in <br><i>your GitHub</i><br>
+            <div class="b-htext">
+              Logged in as <br>LOGIN <br>
               <i class="arrow"></i>
             </div>
           </section><!-- class="cell" -->
         </header>
         <section class="b-content clearfix">
           <section class="cell cell-l" id="js-bl">
-            <div class="b-blogs"> 
-              <a href="#?" class="b-icon b-icon_bloger js-popover" data-original-title="Blogger.com" data-content="Sign in via OAuth2 protocol"></a>
-              <a href="#?" class="b-icon b-icon_tumblr js-popover disabled" data-original-title="tumblr.com" data-content="Coming soon..."></a>
-              <a href="#?" class="b-icon b-icon_press js-popover disabled" data-original-title="WordPress.com" data-content="Coming soon..."></a>
+            <div class="b-blogs">
+              <div class="b-sblog" id="js-sblog">
+                <span class="title">Selected blog:</span>
+                <a class="btitle" href="#?">Blog.com</a>
+              </div>
             </div>    
           </section><!-- class="cell" -->
           <section class="cell cell-m" id="js-bm">
             <div class="b-text">
-              <p>
-                Get your blog formatted for Pelican python package. Get for Pelican python package
-              </p>
+              <p>Result: <span class="green">ok</span></p>
+              <p>View converted</p>
             </div>
           </section><!-- class="cell" -->
           <section class="cell cell-r" id="js-br">
-            <div class="b-github">
-              <a href="javascript:void(0)" class="b-icon b-icon_github js-popover disabled" id="js-github" data-original-title="GitHub.com" data-content="At the beginning login in blog platform"></a>
+            <div id="js-repo" class="b-repo">
+              <span class="title">
+                Repository:
+              </span>
+              <a href="#?" class="rtitle">login/repo_name</a>
             </div>
           </section><!-- class="cell" -->
         </section>

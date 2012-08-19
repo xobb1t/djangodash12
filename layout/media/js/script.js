@@ -61,7 +61,7 @@ $(document).ready(function(){
   function fun_import() {
     $('#js-import .btn').one('click' ,function() {
       var $this = $(this);
-      var $block = $this.closest('#js-repo');
+      var $iblock = $this.closest('#js-import');
       $this.hide();
       $('#js-import .progress').removeClass('hide');
       $('#js-tm img').toggleClass('hide');
