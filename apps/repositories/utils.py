@@ -1,3 +1,4 @@
+from pelican import get_instance as get_pelican_instance
 from subprocess import Popen
 
 import requests
@@ -126,6 +127,12 @@ def github_remove_ssh_key(access_token, user, repo_name, key_id):
 
 
 def pelican_generate(files_path):
-    cmd = ['pelican', 'content', '-s', 'pelicanconf.py']
-    if Popen(cmd, cwd=files_path).wait():
-        raise RepoError("Can't generate blog!")
+    content_path = os.path.join(files_path, 'content')
+    conf_path = os.path.join(files_path, 'pelicanconf.py')
+    output_path = os.path.join(files_path, 'output')
+    pelican = get_pelican_instance(
+        path=content_path,
+        settings=conf_path,
+        output=output_path
+    )
+    pelican.run()
