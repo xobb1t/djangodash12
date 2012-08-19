@@ -62,27 +62,9 @@
 {% block description %}
     {% if github_repo and blog %}
         <div class="b-import" id="js-import"><div class="progress progress-warning"><div class="bar" style="width: 1%;"></div><span class="txt">In progress</span></div></div>
-        <script type="text/javascript">
-            $(document).ready(function(){
-                $('#js-tm img').toggleClass('hide');
-                progress_interval = setInterval(fun_progress, 3000);
-            });
-        </script>
     {% else %}
         <div class="b-text">
             <p>Get your blog formatted for Pelican python package.</p>
         </div>
     {% endif %}
 {% endblock %}
-
-
-{% if github_repo and blog %}
-    {% block extra_js %}
-        <script type="text/javascript">
-            $(document).ready(function(){
-//                $('#js-tm img').toggleClass('hide');
-//                progress_interval = setInterval(fun_progress, 3000);
-            });
-        </script>
-    {% endblock %}
-{% endif %}
