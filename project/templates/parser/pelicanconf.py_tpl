@@ -1,0 +1,29 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*- #
+
+AUTHOR = u"{{ blog.source.username }}"
+SITENAME = u"{{ blog.title }}"
+SITEURL = u'{{ site_url }}'
+
+TIMEZONE = 'Europe/Paris'
+
+DEFAULT_LANG = 'en'
+
+# Blogroll
+LINKS =  (('Pelican', 'http://docs.getpelican.com/'),
+          ('Python.org', 'http://python.org'),
+          ('Jinja2', 'http://jinja.pocoo.org'),)
+
+# Social widget
+SOCIAL = (('GitHub', 'http://github/{{ repo.user.username }}'),)
+
+DEFAULT_PAGINATION = False
+
+FEED_RSS = 'feeds/all.rss'
+TRANSLATION_FEED = None
+CATEGORY_FEED_ATOM = None
+
+TAG_CLOUD_MAX_ITEMS = 100
+TAG_CLOUD_STEPS = 1
+
+THEME = 'pelican-theme'

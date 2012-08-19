@@ -41,6 +41,7 @@ class Source(models.Model):
 class Blog(models.Model):
 
     source = models.ForeignKey(Source, related_name='blogs')
+    title = models.CharField(max_length=255)
     domain = models.CharField(max_length=255)
     identificator = models.CharField(max_length=255)
 
