@@ -3,7 +3,7 @@
 
 AUTHOR = u"{{ blog.source.username }}"
 SITENAME = u"{{ blog.title }}"
-SITEURL = u'{{ site_url }}'
+SITEURL = u'http://{{ site_url }}'
 
 TIMEZONE = 'Europe/Paris'
 
@@ -27,3 +27,5 @@ TAG_CLOUD_MAX_ITEMS = 100
 TAG_CLOUD_STEPS = 1
 
 THEME = 'pelican-theme'
+
+DEFAULT_PAGINATION = 5
