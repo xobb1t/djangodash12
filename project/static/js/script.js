@@ -76,6 +76,9 @@ $(document).ready(function(){
       type: "GET",
       success: function(data){
         $('#js-import .bar').animate({'width': data + "%"});
+        if (data == '100') {
+          clearInterval(progress_interval);
+        }
       }
     });
   }
