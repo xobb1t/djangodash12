@@ -1,0 +1,25 @@
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+<p><b>Blogger account</b></p>
+{% if blog_source and not blog_source.is_expired %}
+  {% with blog_form as form %}
+    {% include 'blogs/blog_form.html' %}
+  {% endwith %}
+{% else %}
+    <a href="{{ google_auth_url }}">Enter to Google</a>
+{% endif %}
+
+<p><b>Github account</b></p>
+{% if github_user %}
+  {% with repo_form as form %}
+    {% include 'repositories/repository_form.html' %}
+  {% endwith %}
+{% else %}
+    <a href="{{ github_auth_url }}">Enter to GitHub</a>
+{% endif %}
