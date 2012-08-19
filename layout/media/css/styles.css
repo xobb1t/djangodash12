@@ -30,7 +30,6 @@ a:hover {
   overflow: hidden;
   margin: 0 auto; 
   min-height: 100%;
-  min-width: 1000px;
 }
 .l-wrap {
   height: 458px;
@@ -393,4 +392,8 @@ a:hover {
 }
 .cell-m .import {
   margin-top: 50px;
+}
+.b-text .listerror {
+  padding-left: 10px;
+  font-size: 16px;
 }

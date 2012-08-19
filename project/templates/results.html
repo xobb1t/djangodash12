@@ -2,7 +2,11 @@
 
 
 {% block pelican_logo %}
-    <img src="{{ STATIC_URL }}images/pelican3.png">
+    {% if process.error %}
+        <img src="{{ STATIC_URL }}images/chicken.png">
+    {% else %}
+        <img src="{{ STATIC_URL }}images/pelican3.png">
+    {% endif %}
 {% endblock %}
 
 
