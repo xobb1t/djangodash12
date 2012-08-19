@@ -1,4 +1,6 @@
-from pelican import get_instance as get_pelican_instance
+from pelican import Pelican
+from pelican.settings import read_settings
+
 from subprocess import Popen
 
 import os
@@ -131,10 +133,12 @@ def pelican_generate(files_path):
     content_path = os.path.join(files_path, 'content')
     conf_path = os.path.join(files_path, 'pelicanconf.py')
     output_path = os.path.join(files_path, 'output')
-    pelican = get_pelican_instance(
+    settings = read_settings(conf_path)
+
+    pelican = Pelican(
+        settings=settings,
         path=content_path,
-        settings=conf_path,
-        output=output_path
+        output_path=output_path
     )
     pelican.run()
 
