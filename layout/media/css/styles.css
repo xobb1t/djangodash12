@@ -12,6 +12,9 @@ body {
 a {
   color: #ddd;
 }
+a:hover {
+  color: #de9b03;
+}
 ::selection {
   background: #868686;
   color: #fff;
