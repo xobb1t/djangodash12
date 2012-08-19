@@ -1,6 +1,8 @@
 import hashlib
 import os
 
+from datetime import datetime
+
 from django.db import models
 from django.conf import settings
 
@@ -26,9 +28,8 @@ class Process(models.Model):
     def save(self, *args, **kwargs):
         if not self.hash:
             time = datetime.now().isoformat()
-            salt = '{0}${1}${2}${3}'.format(
+            salt = '{0}${1}${2}'.format(
                 settings.SECRET_KEY,
-                self.pk,
                 self.blog.domain,
                 time
             )
@@ -37,4 +38,4 @@ class Process(models.Model):
 
     @property
     def path(self):
-        return os.path.join(settings.BLOGS_ROOT, 'blogs', self.hash)
+        return os.path.join(settings.BLOGS_ROOT, self.hash)
