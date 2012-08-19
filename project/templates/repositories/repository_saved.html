@@ -1,4 +1,7 @@
-<p>Repo name: <strong>{{ repo.name }}</strong></p>
+<span class="title">Repo name:</span>
+<span class="btitle">{{ repo.name }}</span>
 {% if repo.cname %}
-    <p>Domain: <strong>{{ repo.cname }}</strong></p>
+    <br /><br />
+    <span class="title">Domain:</span>
+    <span class="btitle">{{ repo.cname }}</span>
 {% endif %}
