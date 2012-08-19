@@ -1,18 +1,23 @@
 from django.shortcuts import render
 
 from blogs.forms import BlogForm
+from blogs.models import Blog, Source
 
 from repositories.forms import RepoForm
 
+from .utils import get_object_or_None
+
 
 def home(request):
-    blog_source = request.session.get('blog_source')
-    blog_obj = request.session.get('blog')
-    blog_url = getattr(blog_obj, 'domain', '')
-    if blog_source and not blog_source.is_expired:
-        blog_form = BlogForm(blog_source=blog_source)
-    else:
-        blog_form = None
+    blog_source_id = request.session.get('blog_source_id')
+    blog_id = request.session.get('blog_id')
+
+    blog_source = get_object_or_None(Source, id=blog_source_id)
+    blog = get_object_or_None(Blog, id=blog_id)
+
+    blog_url = getattr(blog, 'domain', '')
+    blog_form = BlogForm(blog_source=blog_source)
+
     return render(request, 'index.html', {
         'repo_form': RepoForm(initial={'name': blog_url}),
         'blog_form': blog_form

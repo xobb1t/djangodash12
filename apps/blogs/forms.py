@@ -10,18 +10,21 @@ class BlogForm(forms.Form):
 
     blog = forms.ChoiceField(choices=())
 
-    def __init__(self, blog_source, *args, **kwargs):
+    def __init__(self, blog_source=None, *args, **kwargs):
         super(BlogForm, self).__init__(*args, **kwargs)
         self.blog_source = blog_source
+        if not self.blog_source:
+            return
         choices = ((None, 'Select your blog'),)
         blogs_data = api_resource(
             settings.BLOGGER_API_ROOT,
             'users/self/blogs',
-            blog_source.access_token
+            self.blog_source.access_token
         )
-        if blogs_data:
-            for blog in blogs_data['items']:
-                choices+=((blog['id'], blog['name']),)
+        if not blogs_data:
+            return
+        for blog in blogs_data['items']:
+            choices += ((blog['id'], blog['name']),)
         self.fields['blog'].choices = choices
 
     def save(self):

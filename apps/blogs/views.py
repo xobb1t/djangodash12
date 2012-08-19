@@ -7,6 +7,8 @@ from django.contrib import messages
 from django.http import Http404
 from django.shortcuts import redirect, render
 
+from project.core.utils import get_object_or_None
+
 from .forms import BlogForm
 from .models import Source
 from .utils import get_tokens, AuthError, api_resource
@@ -42,19 +44,21 @@ def oauth2callback(request):
     source, created = Source.objects.create_or_update(
         identificator=blog_info['id'], defaults=defaults
     )
-    request.session['blog_source'] = source
+    request.session['blog_source_id'] = source.pk
     return redirect('home')
 
 
 def blog_form(request):
-    blog_source = request.session.get('blog_source')
-    if not blog_source or blog_source.is_expired:
+    blog_source_id = request.session.get('blog_source_id')
+    blog_source = get_object_or_None(Source, pk=blog_source_id)
+    if blog_source is None or blog_source.is_expired:
         raise Http404
+
     form = BlogForm(blog_source=blog_source, data=request.POST)
     if form.is_valid():
         blog = form.save()
         if blog is not None:
-            request.session['blog'] = blog
+            request.session['blog_id'] = blog.pk
         return render(request, 'blogs/blog_saved.html', {
             'blog': blog
         })
