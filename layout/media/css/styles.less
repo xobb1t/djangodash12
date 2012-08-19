@@ -120,6 +120,7 @@ a {
   margin-bottom: 4px;
   font-size: 14px;
   font-weight: 600;
+  padding-top: 4px;
 }
 .b-sblog .b-sselect {
   margin-bottom: 25px;
@@ -260,6 +261,38 @@ a {
   text-decoration: none;
   font-weight: 600;
 }
+
+.b-import .progress {
+  width: 430px;
+}
+.b-import .progress,
+.b-import .progress .bar {
+  height: 48px;
+  position: relative;
+}
+.b-import .progress .bar  {
+  z-index: 2;
+}
+.b-import .progress .txt {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 16px;
+  color: #777;
+}
+
+.hide {
+  position: absolute;
+  left: -4000px;
+  top: -40000px;
+}
+.loader {
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  z-index: 12;
+  margin: -15px 0 0 -15px;
+}
 /*global*/
 .align-center {
   text-align: center;
@@ -308,4 +341,7 @@ a {
 }
 .b-content .cell {
   height: 100px;
+}
+.cell-m .import {
+  margin-top: 50px;
 }
