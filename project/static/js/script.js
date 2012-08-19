@@ -78,6 +78,7 @@ $(document).ready(function(){
         $('#js-import .bar').animate({'width': data + "%"});
         if (data == '100') {
           clearInterval(progress_interval);
+          document.location = '/parser/results/';
         }
       }
     });
