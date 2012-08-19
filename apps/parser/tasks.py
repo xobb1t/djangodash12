@@ -15,6 +15,7 @@ def exception_handle(func):
             func(process)
         except Exception, e:
             process.error = '%s: %s' % (e.__class__.__name__, unicode(e))
+            process.update_stage(100)
             process.save()
     decorator.__name__ = func.__name__
     return decorator
