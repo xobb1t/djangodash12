@@ -28,6 +28,6 @@ pelican==3.0
     blinker==1.2
     Unidecode==0.04.9
     argparse==1.2.1
-
+    ghp-import==0.1.8
 
 html2text==3.200.3
