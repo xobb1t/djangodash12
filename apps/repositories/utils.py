@@ -104,3 +104,8 @@ def git_remote_add(files_path, ssh_url):
     cmd = ['git', 'remote', 'add', 'origin', ssh_url]
     if Popen(cmd, cwd=files_path).wait():
         raise RepoError("Can't add git remote!")
+
+
+def git_push_origin(files_path):
+    if Popen(['git', 'push', '-u', 'origin'], cwd=files_path).wait():
+        raise RepoError("Can't push into git remote repo!")
