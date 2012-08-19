@@ -21,9 +21,15 @@
 
 {% block auth_left %}
     {% if blog_source and not blog_source.is_expired %}
-        {% with blog_form as form %}
-            {% include 'blogs/blog_form.html' %}
-        {% endwith %}
+        <div class="b-sblog" id="js-sblog">
+            {% if blog %}
+                {% include "blogs/blog_saved.html" %}
+            {% else %}
+                {% with blog_form as form %}
+                    {% include 'blogs/blog_form.html' %}
+                {% endwith %}
+            {% endif %}
+        </div>
     {% else %}
         <a href="{{ google_auth_url }}" class="b-icon b-icon_bloger js-popover" data-original-title="Blogger.com" data-content="Sign in via OAuth2 protocol"></a>
         <a href="#?" class="b-icon b-icon_tumblr js-popover disabled" data-original-title="tumblr.com" data-content="Coming soon..."></a>

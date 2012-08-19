@@ -37,7 +37,7 @@
 {% endblock %}
           </section><!-- class="cell" -->
           <section class="cell cell-r" id="js-tr">
-            <div class="b-htext disabled">
+            <div class="b-htext{% if not github_user %} disabled{% endif %}">
 {% block text_right %}{% endblock %}
               <i class="arrow"></i>
             </div>
