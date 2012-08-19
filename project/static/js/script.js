@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  var loader = '<img src="' + __STATIC_URL__ + 'images/loader.gif" alt="loader" class="loader">'
+  var loader = '<img src="' + __STATIC_URL__ + 'images/loader.gif" alt="loader" class="loader">';
   $('.js-popover').popover({
     placement: 'top'
   });
@@ -40,24 +40,28 @@ $(document).ready(function(){
     $block.html(loader);
     var action = $this.data('action');
     var data_form = $this.serialize();
-    var btnimport = '<div class="b-import" id="js-import"><a href="#?" class="btn btn-warning btn-large" data-action="/parser/start/">IMPORT</a><div class="progress progress-warning hide"><div class="bar" style="width: 1%;"></div><span class="txt">In progress</span></div></div>';
+    var btnimport = '<div class="b-import" id="js-import">' +
+                    '<a href="#?" class="btn btn-warning btn-large" ' +
+                    'data-action="/parser/start/">IMPORT</a>' + 
+                    '<div class="progress progress-warning hide">' + 
+                    '<div class="bar" style="width: 1%;"></div>' + 
+                    '<span class="txt">In progress</span></div></div>';
 
     $.ajax({
       url: action,
       type: "POST",
       data: data_form,
       success: function(data){
-        $('#js-bm').html(btnimport);
         $block.html(data);
+        $('#js-bm').html(btnimport);
+        fun_import();
       }
     });
-    fun_import();
     return false;
   });
   function fun_import() {
     $('#js-import .btn').one('click' ,function() {
       var $this = $(this);
-      var $iblock = $this.closest('#js-import');
       $this.hide();
       $('#js-import .progress').removeClass('hide');
       $('#js-tm img').toggleClass('hide');
