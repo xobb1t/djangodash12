@@ -40,9 +40,11 @@
 
 {% block auth_right %}
     {% if blog_source and not blog_source.is_expired and github_user %}
-        {% with repo_form as form %}
-            {% include 'repositories/repository_form.html' %}
-        {% endwith %}
+        <div class="b-repo" id="js-repo">
+            {% with repo_form as form %}
+                {% include 'repositories/repository_form.html' %}
+            {% endwith %}
+        </div>
     {% else %}
         <a href="javascript:void(0)" data-github="{{ github_auth_url }}" class="b-icon b-icon_github js-popover disabled" id="js-github" data-original-title="GitHub.com" data-content="At the beginning login in blog platform"></a>
     {% endif %}
