@@ -2,8 +2,8 @@ import os
 import re
 import requests
 import slumber
-from shutil import copytree
 from StringIO import StringIO
+from subprocess import Popen
 
 from datetime import datetime
 from django.conf import settings
@@ -63,12 +63,18 @@ def get_post_slug(domain, full_url):
     return slug[1:]
 
 
-def convert_blog_posts(process, posts):
+def create_pelican_instance(process):
     content_root = os.path.join(process.path, 'content')
     try:
         os.makedirs(content_root)
     except OSError:
         pass
+    pelican_src = os.path.join(settings.PACKAGE_ROOT, 'pelican')
+    if Popen(['cp', '-r', pelican_src, process.path]).wait():
+        pass
+
+
+def convert_blog_posts(process, posts):
     domain = process.blog.domain
     for post in posts:
         slug = get_post_slug(domain, post.get('url'))
@@ -104,11 +110,6 @@ def create_pelican_configs(process):
         site_url = repo.cname
     else:
         site_url = '{0}.github.com/{1}'.format(repo.user.username, repo.name)
-    pelican_src = os.path.join(settings.PACKAGE_ROOT, 'pelican')
-    try:
-        copytree(pelican_src, process.path)
-    except OSError:
-        pass
     result = render_to_string('parser/pelicanconf.py_tpl', {
         'blog': blog, 'repo': repo, 'site_url': site_url
     })

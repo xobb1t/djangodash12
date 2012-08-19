@@ -6,3 +6,4 @@ Pelican-powered blog
   3. Generate blog: ``pelican content -s pelicanconf.py``
   4. Update gh-pages branch: ``ghp-import output``
   5. Upload on GitHub: ``git push origin gh-pages``
+  6. [Setting up a custom domain](https://help.github.com/articles/setting-up-a-custom-domain-with-pages)
