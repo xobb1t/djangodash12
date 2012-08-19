@@ -30,4 +30,4 @@ pelican==3.0
     argparse==1.2.1
     ghp-import==0.1.8
 
-html2text==3.200.3
+-e git://github.com/aaronsw/html2text.git@4d2fc96b895f20b338f3245220c051ea6e87aab3#egg=html2text
