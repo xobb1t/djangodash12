@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!--[if IE 6]><html class="no-js ie6 lt-ie9 lt-ie8 lt-ie7" lang="en"><![endif]-->
+<!--[if IE 7]><html class="no-js ie7 lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if IE 8]><html class="no-js ie8 lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>DjangoDash12</title>
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/global.css">
+  <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/styles.css">
+  <link href='http://fonts.googleapis.com/css?family=Advent+Pro' rel='stylesheet' type='text/css'>
+  <!--[if IE]>
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/ie.css">
+  <![endif]-->
+  <script type="text/javascript" src="{{ STATIC_URL }}js/libs/modernizr-2.5.3.min.js"></script>
+</head>
+<body>
+  <div class="l-page">
+    <div class="l-wrap">
+      <div class="l-container clearfix">
+        <header class="b-header clearfix">
+          <section class="cell cell-l" id="js-tl">
+            <div class="b-htext">
+{% block text_left %}{% endblock %}
+              <i class="arrow"></i>
+            </div>
+          </section><!-- class="cell" -->
+          <section class="cell cell-m align-center" id="js-tm">
+{% block pelican_logo %}
+    <img src="{{ STATIC_URL }}images/pelican.png" alt="">  
+{% endblock %}
+          </section><!-- class="cell" -->
+          <section class="cell cell-r" id="js-tr">
+            <div class="b-htext disabled">
+{% block text_right %}{% endblock %}
+              <i class="arrow"></i>
+            </div>
+          </section><!-- class="cell" -->
+        </header>
+        <section class="b-content clearfix">
+          <section class="cell cell-l" id="js-bl">
+            <div class="b-blogs">
+{% block auth_left %}{% endblock %}
+            </div>
+          </section><!-- class="cell" -->
+          <section class="cell cell-m" id="js-bm">
+            <div class="b-text">
+{% block description %}
+    <p>
+        Get your blog formatted for Pelican python package.
+    </p>
+{% endblock %}
+            </div>
+          </section><!-- class="cell" -->
+          <section class="cell cell-r" id="js-br">
+            <div class="b-github">
+{% block auth_right %}{% endblock %}
+            </div>
+          </section><!-- class="cell" -->
+        </section>
+      </div><!-- class="l-container" -->
+    </div><!-- class="l-wrap" -->
+  </div><!-- class="l-page" -->
+  <script type="text/javascript"  src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script type="text/javascript" src="{{ STATIC_URL }}js/libs/jquery-1.7.1.min.js"><\/script>')</script>
+  <script type="text/javascript" src="{{ STATIC_URL }}js/libs/bootstrap.js"></script>
+  <script type="text/javascript" src="{{ STATIC_URL }}js/libs/jquery.sselect.js"></script>
+  <script type="text/javascript" src="{{ STATIC_URL }}js/script.js"></script>
+</body>
+</html>

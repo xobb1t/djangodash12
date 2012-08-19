@@ -19,16 +19,16 @@ def html2text(html):
     links = list(link_re.finditer(txt))
     # replace links
     out = StringIO()
-    pos = 0 # position in txt
+    pos = 0
     for l in links:
         out.write(txt[pos:l.start()])
-        out.write(l.group().replace("\n",""))
+        out.write(l.group().replace("\n", ""))
         pos = l.end()
     out.write(txt[pos:])
     return out.getvalue()
 
 
-def get_slumber_api(root, access_token):
+def get_api(root, access_token):
     session = requests.session(
         params={'access_token': access_token}
     )
@@ -37,7 +37,7 @@ def get_slumber_api(root, access_token):
 
 def parse_blog_posts(process, max_pages, page_token=None, page_size=20):
     blog = process.blog
-    api = get_slumber_api(
+    api = get_api(
         settings.BLOGGER_API_ROOT,
         blog.source.access_token
     )
