@@ -1,26 +1,16 @@
-/*LESS*/
-@bg: #334443;
-@bgimg: url('../images/grid.png');
-@color: #ddd;
-@colora: #ddd;
-@bordercolor: #415857;
-@fonr: 'Advent Pro', Arial,Helvetica,sans-serif;
-@font: 'Advent Pro', Arial,Helvetica,sans-serif;
-
-
 /*base*/
 body {
-  background: @bg @bgimg repeat 0 0;
+  background: #334443 url('../images/grid.png') repeat 0 0;
 }
 input,
 textarea,
 body {
-  color: @color;
+  color: #ddd;
   font-size: 12px;
   font-family: Tahoma, 'Geneva CY', sans-serif;
 }
 a {
-  color: @colora;
+  color: #ddd;
 }
 ::selection {
   background: #868686;
@@ -62,7 +52,7 @@ a {
   bottom: 8px;
   left: 25px;
   width: 189px;
-  font-family: @font;
+  font-family: 'Advent Pro', Arial,Helvetica,sans-serif;
   font-size: 20px;
   text-align: center;
 }
@@ -79,7 +69,7 @@ a {
 
 .b-text {
   font-size: 15px;
-  font-family: @fonr; 
+  font-family: 'Advent Pro', Arial,Helvetica,sans-serif; 
 }
 
 .b-icon {
@@ -191,7 +181,7 @@ a {
   -ms-border-radius: 2px;
   border-radius: 2px;
   margin: 3px;
-  background-color: @color;
+  background-color: #ddd;
   max-height: 221px;
   overflow: auto;
 }
@@ -335,7 +325,7 @@ a {
   float: left;
   width: 430px;
   padding: 25px;
-  border-bottom: 1px dashed @bordercolor;
+  border-bottom: 1px dashed #415857;
 }
 .cell-l,
 .cell-r {
@@ -347,10 +337,10 @@ a {
 }
 .cell-l {
   margin-left: 10px;
-  border-right: 1px dashed @bordercolor;
+  border-right: 1px dashed #415857;
 }
 .cell-r {
-  border-left: 1px dashed @bordercolor; 
+  border-left: 1px dashed #415857; 
 }
 .cell:hover {
   background-color: rgba(41,41,41, 0.3);
