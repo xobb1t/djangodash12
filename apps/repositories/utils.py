@@ -6,7 +6,8 @@ import simplejson
 from django.conf import settings
 
 from .exceptions import (CreateGitRepoError, AddFilesIntoRepoError,
-    InitialCommitError, GHPImportError, GitHubCreateRepoError)
+    InitialCommitError, GHPImportError, GitHubCreateRepoError,
+    GitHubAddSSHKeyError)
 
 
 def get_access_data(code):
@@ -66,7 +67,7 @@ def github_pages_import(files_path):
 def github_create_repo(access_token, repo_name):
     post_data_dict = {
         'name': repo_name,
-        'description': 'Static Pelican-powered blog',
+        'description': 'Static Pelican-powered blog'
     }
     response_json = requests.post(
         '{0}/user/repos?access_token={1}'.format(
@@ -78,3 +79,21 @@ def github_create_repo(access_token, repo_name):
     response_dict = simplejson.loads(response_json.text)
     if 'name' in response_dict:
         raise GitHubCreateRepoError("Don't create repo in github")
+
+
+def github_add_ssh_key(access_token, user, repo_name, ssh_key):
+    post_data_dict = {
+        'title': 'key for push Pelican blog generator',
+        'key': ssh_key,
+    }
+    response_json = requests.post(
+        '{0}/repos/{1}/{2}/keys?access_token={3}'.format(
+            settings.GITHUB_API_HOST, user, repo_name, access_token
+        ),
+        data=simplejson.dumps(post_data_dict),
+        headers={'Accept': 'application/json'}
+    )
+    response_dict = simplejson.loads(response_json.text)
+    if 'id' not response_dict:
+        raise GitHubAddSSHKeyError("Don't add ssh-key in repo")
+    return response_dict['id']

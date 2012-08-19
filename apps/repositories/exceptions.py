@@ -16,3 +16,7 @@ class GHPImportError(Exception):
 
 class GitHubCreateRepoError(Exception):
     pass
+
+
+class GitHubAddSSHKeyError(Exception):
+    pass
