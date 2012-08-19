@@ -95,7 +95,7 @@ def github_add_ssh_key(access_token, user, repo_name, ssh_key):
         headers={'Accept': 'application/json'}
     )
     response_dict = simplejson.loads(response_json.text)
-    if 'id' not response_dict:
+    if 'id' not in response_dict:
         raise RepoError("Don't add ssh-key in repo")
     return response_dict['id']
 
