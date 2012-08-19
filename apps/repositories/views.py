@@ -1,5 +1,9 @@
 from django.contrib import messages
+from django.http import Http404
 from django.shortcuts import redirect, render
+
+from blogs.models import Blog
+from project.core.utils import get_object_or_None
 
 from .forms import RepoForm
 from .models import User, Repo
@@ -33,8 +37,7 @@ def oauth2callback(request):
         user_obj.username = username
         user_obj.save()
 
-    request.session['repo_user'] = user_obj
-    request.session.modified = True
+    request.session['repo_user_id'] = user_obj.pk
     return redirect('home')
 
 
@@ -44,20 +47,25 @@ def auth_failed(request, error_msg):
 
 
 def save_repo(request):
-    repo_user = request.session.get('repo_user')
+    repo_user_id = request.session.get('repo_user_id')
+    repo_user = get_object_or_None(User, pk=repo_user_id)
+    blog_id = request.session.get('blog_id')
+    blog = get_object_or_None(Blog, pk=blog_id)
+    if not all((blog, repo_user)):
+        raise Http404
+
     form = RepoForm(
         repo_user=repo_user,
         data=request.POST
     )
-    form_valid = form.is_valid()
-    if form_valid:
-        blog = request.session.get('blog')
-        obj, created = Repo.objects.get_or_create(
-            user=repo_user, blog=blog, name=form['name'].value(),
-            cname=form['cname'].value()
+    if form.is_valid():
+        name = form.cleaned_data['name']
+        cname = form.cleaned_data.get('cname', '')
+        repo, created = Repo.objects.get_or_create(
+            user=repo_user, blog=blog,
+            name=name, cname=name
         )
-        request.session['repo'] = obj
-        request.session.modified = True
+        request.session['repo_id'] = repo.pk
         return render(request, 'repositories/repository_saved.html')
 
     return render(request, 'repositories/repository_form.html', {
