@@ -1,7 +1,12 @@
+from subprocess import Popen
+
 import requests
 import simplejson
 
 from django.conf import settings
+
+from .exceptions import (CreateGitRepoError, AddFilesIntoRepoError,
+    InitialCommitError, GHPImportError)
 
 
 def get_access_data(code):
@@ -36,3 +41,23 @@ def repo_exists(access_token, user, repo):
         )
     )
     return response.status_code != 404
+
+
+def git_init_repo(files_path):
+    if Popen(['git', 'init'], cwd=files_path).wait():
+        raise CreateGitRepoError("Can't create git repository")
+
+
+def git_add_files(files_path):
+    if Popen(['git', 'add', '.'], cwd=files_path).wait():
+        raise AddFilesIntoRepoError("Can't add files in git repository")
+
+
+def git_initial_commit(files_path):
+    if Popen(['git', 'commit', '-m', 'Initial commit'], cwd=files_path).wait():
+        raise InitialCommitError("Can't create initial commit")
+
+
+def github_pages_import(files_path):
+    if Popen(['ghp-import', 'output'], cwd=files_path).wait():
+        raise GHPImportError("Can't import pages for ghp-import")
