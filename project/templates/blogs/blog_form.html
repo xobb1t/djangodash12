@@ -1,0 +1,9 @@
+{% load url from future %}
+<form action="{% url 'blogs_blog_add' %}" method="POST">
+{% csrf_token %}
+  <ul>
+    <li>Username: {{ blog_source.username }}</li>
+    <li>ID: {{ blog_source.identificator }}</li>
+    <li>Choose blog: {{ form.blog }}<input type="submit"></li>
+  </ul>
+</form>

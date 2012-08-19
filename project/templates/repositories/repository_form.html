@@ -1,0 +1,11 @@
+{% load url from future %}
+<form method="POST" action="{% url 'repositories_save_repo' %}">
+    {% csrf_token %}
+    <ul>
+        <li>Username: {{ github_user.username }}</li>
+        <li>ID: {{ github_user.identification }}</li>
+        <li>Repo name: {{ repo_form.name }}{{ repo_form.name.errors }}</li>
+        <li>Domain CNAME: {{ repo_form.cname }}{{ repo_form.cname.errors }}</li>
+    </ul>
+    <input type="submit">
+</form>

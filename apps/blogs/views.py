@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 
 from django.conf import settings
 from django.contrib import messages
-from django.http import HttpResponse, Http404
+from django.http import Http404
 from django.shortcuts import redirect, render
 
 from .forms import BlogForm
@@ -55,8 +55,12 @@ def blog_form(request):
         blog = form.save()
         if blog is not None:
             request.session['blog'] = blog
-        return HttpResponse(blog.default_domain)
-    return Http404
+        return render(request, 'blogs/blog_saved.html', {
+            'blog': blog
+        })
+    return render(request, 'blogs/blog_form.html', {
+        'form': form
+    })
 
 
 def authorization_failed(request):

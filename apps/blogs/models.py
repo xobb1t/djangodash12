@@ -12,7 +12,8 @@ class SourceManager(models.Manager):
         defaults = kwargs.get('defaults', {})
         if not created:
             for key, value in defaults.items():
-                setattr(instance, key, value)
+                if hasattr(instance, key):
+                    setattr(instance, key, value)
             instance.save()
         return instance, created
 
@@ -40,8 +41,7 @@ class Blog(models.Model):
 
     source = models.ForeignKey(Source, related_name='blogs')
     domain = models.CharField(max_length=255)
-    default_domain = models.CharField(max_length=255)
     identificator = models.CharField(max_length=255)
 
     def __unicode__(self):
-        return self.domain or self.default_domain
+        return self.domain

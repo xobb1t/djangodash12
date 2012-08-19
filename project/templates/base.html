@@ -1,5 +1,3 @@
-{% load url from future %}
-
 {% if messages %}
     <ul class="messages">
         {% for message in messages %}
@@ -10,30 +8,18 @@
 
 <p><b>Blogger account</b></p>
 {% if blog_source and not blog_source.is_expired %}
-    <form action="{% url 'blogs_blog_add' %}" method="POST">
-    {% csrf_token %}
-      <ul>
-        <li>Username: {{ blog_source.username }}</li>
-        <li>ID: {{ blog_source.identificator }}</li>
-          <li>Choose blog: {{ blog_form.blog }}<input type="submit"></li>
-      </ul>
-    </form>
+  {% with blog_form as form %}
+    {% include 'blogs/blog_form.html' %}
+  {% endwith %}
 {% else %}
     <a href="{{ google_auth_url }}">Enter to Google</a>
 {% endif %}
 
 <p><b>Github account</b></p>
 {% if github_user %}
-    <form method="POST" action="{% url 'repositories_save_repo' %}">
-        {% csrf_token %}
-        <ul>
-            <li>Username: {{ github_user.username }}</li>
-            <li>ID: {{ github_user.identification }}</li>
-            <li>Repo name: {{ repo_form.name }}{{ repo_form.name.errors }}</li>
-            <li>Domain CNAME: {{ repo_form.cname }}{{ repo_form.cname.errors }}</li>
-        </ul>
-        <input type="submit">
-    </form>
+  {% with repo_form as form %}
+    {% include 'repositories/repository_form.html' %}
+  {% endwith %}
 {% else %}
     <a href="{{ github_auth_url }}">Enter to GitHub</a>
 {% endif %}
