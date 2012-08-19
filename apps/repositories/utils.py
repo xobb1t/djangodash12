@@ -5,9 +5,9 @@ import simplejson
 
 from django.conf import settings
 
-from .exceptions import (CreateGitRepoError, AddFilesIntoRepoError,
-    InitialCommitError, GHPImportError, GitHubCreateRepoError,
-    GitHubAddSSHKeyError)
+
+class RepoError(Exception):
+    pass
 
 
 def get_access_data(code):
@@ -46,22 +46,22 @@ def repo_exists(access_token, user, repo):
 
 def git_init_repo(files_path):
     if Popen(['git', 'init'], cwd=files_path).wait():
-        raise CreateGitRepoError("Can't create git repository")
+        raise RepoError("Can't create git repository")
 
 
 def git_add_files(files_path):
     if Popen(['git', 'add', '.'], cwd=files_path).wait():
-        raise AddFilesIntoRepoError("Can't add files in git repository")
+        raise RepoError("Can't add files in git repository")
 
 
 def git_initial_commit(files_path):
     if Popen(['git', 'commit', '-m', 'Initial commit'], cwd=files_path).wait():
-        raise InitialCommitError("Can't create initial commit")
+        raise RepoError("Can't create initial commit")
 
 
 def github_pages_import(files_path):
     if Popen(['ghp-import', 'output'], cwd=files_path).wait():
-        raise GHPImportError("Can't import pages for ghp-import")
+        raise RepoError("Can't import pages for ghp-import")
 
 
 def github_create_repo(access_token, repo_name):
@@ -78,7 +78,7 @@ def github_create_repo(access_token, repo_name):
     )
     response_dict = simplejson.loads(response_json.text)
     if 'name' in response_dict:
-        raise GitHubCreateRepoError("Don't create repo in github")
+        raise RepoError("Don't create repo in github")
 
 
 def github_add_ssh_key(access_token, user, repo_name, ssh_key):
@@ -95,5 +95,5 @@ def github_add_ssh_key(access_token, user, repo_name, ssh_key):
     )
     response_dict = simplejson.loads(response_json.text)
     if 'id' not response_dict:
-        raise GitHubAddSSHKeyError("Don't add ssh-key in repo")
+        raise RepoError("Don't add ssh-key in repo")
     return response_dict['id']
