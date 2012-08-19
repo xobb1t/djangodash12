@@ -156,4 +156,3 @@ def add_cname_in_branches(files_path, domain):
     git_change_branch(files_path, 'gh-pages')
     add_cname_file(files_path, domain)
     git_change_branch(files_path, 'master')
->>>>>>> 49dec197362a1404c306ba4be927316ceec3ef80
