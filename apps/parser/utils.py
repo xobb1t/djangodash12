@@ -95,7 +95,7 @@ def convert_blog_post(post, slug, file_path):
         f.write(result.encode('utf-8'))
 
 
-def create_pelikan_configs(process):
+def create_pelican_configs(process):
     blog = process.blog
     repo = process.repo
     if repo.cname:
@@ -115,5 +115,3 @@ def create_pelikan_configs(process):
     file_path = os.path.join(process.path, 'publishconf.py')
     with open(file_path, 'w') as f:
         f.write(result.encode('utf-8'))
-
-
