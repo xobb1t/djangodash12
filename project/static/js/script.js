@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  var loader = '<img src="media/images/loader.gif" alt="loader" class="loader">'
+  var loader = '<img src="' + __STATIC_URL__ + 'images/loader.gif" alt="loader" class="loader">'
   $('.js-popover').popover({
     placement: 'top'
   });

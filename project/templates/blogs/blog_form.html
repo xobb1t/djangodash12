@@ -1,9 +1,14 @@
 {% load url from future %}
-<form action="{% url 'blogs_blog_add' %}" method="POST">
-{% csrf_token %}
-  <ul>
-    <li>Username: {{ blog_source.username }}</li>
-    <li>ID: {{ blog_source.identificator }}</li>
-    <li>Choose blog: {{ form.blog }}<input type="submit"></li>
-  </ul>
-</form>
+
+<div class="b-sblog" id="js-sblog">
+    <form action="{% url 'blogs_blog_add' %}" method="POST">
+        {% csrf_token %}
+
+        <span class="title">Import blog:</span>
+        <div class="b-sselect js-select">
+            {{ form.blog }}
+        </div>
+        <input type="submit" class="btn btn-inverse" value="Save">
+      </ul>
+    </form>
+</div>
