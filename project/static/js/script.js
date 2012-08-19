@@ -16,6 +16,7 @@ $(document).ready(function(){
     var action = $this.data('action');
     var github_url = $('#js-github').data('github');
     var data_form = $this.serialize();
+
     $.ajax({
       url: action,
       type: "POST",
@@ -39,23 +40,17 @@ $(document).ready(function(){
     $block.html(loader);
     var action = $this.data('action');
     var data_form = $this.serialize();
-    var demo = '<p>Repo name: <strong>blog</strong></p><p>Domain: <strong>blog.com</strong></p>'
     var btnimport = '<div class="b-import" id="js-import"><a href="#?" class="btn btn-warning btn-large" data-action="/import/">IMPORT</a><div class="progress progress-warning hide"><div class="bar" style="width: 1%;"></div><span class="txt">In progress</span></div></div>'
 
-            
-    // $.ajax({
-    //   url: action,
-    //   type: "POST",
-    //   data: data_form,
-    //   success: function(data){
-    //     if (!bata.key) {
-    //       $('#js-bm').html(btnimport);
-    //     }
-    //     $block.html(demo);
-    //   }
-    // });
-    $('#js-bm').html(btnimport);
-    $block.html(demo);
+    $.ajax({
+      url: action,
+      type: "POST",
+      data: data_form,
+      success: function(data){
+        $('#js-bm').html(btnimport);
+        $block.html(data);
+      }
+    });
     fun_import();
     return false;
   });

@@ -46,10 +46,12 @@ a {
   overflow: hidden;
 }
 .l-middle .l-content {
+  overflow: hidden;
   float: left;
   width: 725px;
 }
 .l-middle .l-sidebar {
+  overflow: hidden;
   float: right;
   width: 200px;
 }
