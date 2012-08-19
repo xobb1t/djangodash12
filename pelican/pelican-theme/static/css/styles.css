@@ -42,6 +42,7 @@ a {
 }
 .l-middle {
   margin: 0 auto;
+  padding-bottom: 20px;
   width: 960px;
   overflow: hidden;
 }
