@@ -35,6 +35,7 @@ def work_on(process):
     repo_utils.git_init_repo(process.path)
     repo_utils.git_add_files(process.path)
     repo_utils.git_initial_commit(process.path)
+    repo_utils.pelican_generate(process.path)
     #repo_utils.github_pages_import(process.path)
     ssh_url = repo_utils.github_create_repo(repo.user.access_token, repo.name)
     key_id = repo_utils.github_add_ssh_key(
