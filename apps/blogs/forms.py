@@ -37,10 +37,12 @@ class BlogForm(forms.Form):
         if blog_data:
             domain = blog_data['url'].lower().replace('/', '')
             domain = domain.replace('http:', '')
+            title = blog_data['name']
             blog = Blog.objects.create(
                 source=self.blog_source,
                 identificator=blog_id,
-                domain=domain
+                domain=domain,
+                title=title,
             )
             return blog
         return None

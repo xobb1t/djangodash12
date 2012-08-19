@@ -61,9 +61,9 @@ def blog_form(request):
         blog = form.save()
         if blog is not None:
             request.session['blog_id'] = blog.pk
-        return render(request, 'blogs/blog_saved.html', {
-            'blog': blog
-        })
+            return render(request, 'blogs/blog_saved.html', {
+                'blog': blog
+            })
     return render(request, 'blogs/blog_form.html', {
         'form': form
     })
