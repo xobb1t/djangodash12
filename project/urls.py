@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, include, url
 
-from project.core.views import home
+from project.core.views import home, logout
 
 
 urlpatterns = patterns(
@@ -9,4 +9,5 @@ urlpatterns = patterns(
     url(r'^blogs/', include('blogs.urls')),
     url(r'^parser/', include('parser.urls')),
     url(r'^repositories/', include('repositories.urls')),
+    url(r'^logout/$', logout, name='logout'),
 )

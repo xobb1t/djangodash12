@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from blogs.forms import BlogForm
 from blogs.models import Blog, Source
@@ -22,3 +22,9 @@ def home(request):
         'repo_form': RepoForm(initial={'name': blog_url}),
         'blog_form': blog_form
     })
+
+
+def logout(self):
+    request.session.pop('blog_id', None)
+    request.session.pop('repo_id', None)
+    return redirect('home')
