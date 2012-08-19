@@ -4,13 +4,19 @@ import simplejson
 
 from django.conf import settings
 from pelican import Pelican
+from pelican.tools.pelican_themes import _THEMES_PATH
+
 from pelican.settings import read_settings
 from subprocess import Popen
 
 from .ghp_import import run_import
 
+
 class RepoError(Exception):
     pass
+
+
+global _THEMES_PATH
 
 
 def get_access_data(code):
@@ -133,14 +139,13 @@ def pelican_generate(files_path):
     content_path = os.path.join(files_path, 'content')
     conf_path = os.path.join(files_path, 'pelicanconf.py')
     output_path = os.path.join(files_path, 'output')
-    theme = os.path.join(files_path, 'pelican-theme')
     settings = read_settings(conf_path)
-
+    _THEMES_PATH = files_path
     pelican = Pelican(
         settings=settings,
         path=content_path,
         output_path=output_path,
-        theme=theme
+        theme='pelican-theme'
     )
     pelican.run()
 
