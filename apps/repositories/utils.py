@@ -109,3 +109,13 @@ def git_remote_add(files_path, ssh_url):
 def git_push_origin(files_path):
     if Popen(['git', 'push', '-u', 'origin'], cwd=files_path).wait():
         raise RepoError("Can't push into git remote repo!")
+
+
+def github_remove_ssh_key(access_token, user, repo_name, key_id):
+    response = requests.delete(
+        '{0}/repos/{1}/{2}/keys/{3}?access_token={4}'.format(
+            settings.GITHUB_API_HOST, user, repo_name, key_id, access_token
+        )
+    )
+    if response.status_code != 204:
+        raise RepoError("Can't remove ssh key!")
