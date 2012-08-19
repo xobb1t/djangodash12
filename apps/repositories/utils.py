@@ -156,10 +156,7 @@ def git_change_branch(files_path, branch):
         raise RepoError("Can't change branch to {0}!".format(branch))
 
 
-def add_cname_in_branches(files_path, domain):
+def add_cname(files_path, domain):
     if domain is None:
         return
     add_cname_file(files_path, domain)
-    git_change_branch(files_path, 'gh-pages')
-    add_cname_file(files_path, domain)
-    git_change_branch(files_path, 'master')
