@@ -45,8 +45,7 @@ a:hover {
 .l-page_index {
   min-height: 451px;
 }
-.l-page_index .l-container {
-}
+
 /*blocks*/
 .b-htext {
   position: absolute;
@@ -309,6 +308,28 @@ a:hover {
 .green {
   color: #00ff00;
   font-weight: 600;
+}
+
+.b-error {
+  position: absolute;
+  left: 0;
+  top: -105%;
+  z-index: 12;
+  width: 100%;
+  background: #283736 url('../images/grid.png') repeat 0 0;
+  -webkit-box-shadow: 0 2px 2px rgba(0,0,0,0.1);
+  -moz-box-shadow: 0 2px 2px rgba(0,0,0,0.1);
+  -ms-box-shadow: 0 2px 2px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 2px rgba(0,0,0,0.1);
+}
+.b-error .messages {
+  padding: 10px 20px;
+}
+.b-error li {
+  padding: 3px;
+}
+.b-error .error {
+  color: #ff0000;
 }
 /*global*/
 .align-center {
