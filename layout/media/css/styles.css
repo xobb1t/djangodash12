@@ -206,6 +206,7 @@ a:hover {
   margin-bottom: 6px;
 }
 .b-field label {
+  font-size: 12px;
   float: left;
   margin-right: 5px;
   line-height: 29px;
@@ -239,6 +240,7 @@ a:hover {
 
 .b-repo {
   text-align: center;
+  font-size: 14px;
 }
 .b-repo p {
   margin-bottom: 13px;
