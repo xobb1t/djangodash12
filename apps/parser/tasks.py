@@ -57,7 +57,6 @@ def work_on(process):
     process.update_stage(80)
     repo_utils.git_push_origin(process.path)
     process.update_stage(85)
-    repo_utils.github_pages_import(process.path)
     process.update_stage(95)
     repo_utils.github_remove_ssh_key(
         repo.user.access_token, repo.user.username, repo.name, key_id

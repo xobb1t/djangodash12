@@ -10,8 +10,6 @@ from pelican.settings import read_settings
 
 from subprocess import Popen
 
-from .ghp_import import run_import
-
 
 class RepoError(Exception):
     pass
@@ -64,12 +62,6 @@ def git_add_files(files_path):
 def git_initial_commit(files_path):
     if Popen(['git', 'commit', '-m', 'Initial commit'], cwd=files_path).wait():
         raise RepoError("Can't create initial commit")
-
-
-def github_pages_import(files_path):
-    output = os.path.join(files_path, 'output')
-    if run_import(output, 'Initial commit'):
-        raise RepoError("Can't import pages for ghp-import")
 
 
 def github_create_repo(access_token, repo_name):
