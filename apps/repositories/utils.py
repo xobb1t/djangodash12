@@ -79,6 +79,7 @@ def github_create_repo(access_token, repo_name):
     response_dict = simplejson.loads(response_json.text)
     if 'name' in response_dict:
         raise RepoError("Don't create repo in github")
+    return response_dict['ssh_url']
 
 
 def github_add_ssh_key(access_token, user, repo_name, ssh_key):
