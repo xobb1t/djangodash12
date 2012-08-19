@@ -1,10 +1,13 @@
-from subprocess import Popen
-
+import os
 import requests
 import simplejson
 
 from django.conf import settings
+from pelican import Pelican
+from pelican.settings import read_settings
+from subprocess import Popen
 
+from .ghp_import import run_import
 
 class RepoError(Exception):
     pass
@@ -60,7 +63,8 @@ def git_initial_commit(files_path):
 
 
 def github_pages_import(files_path):
-    if Popen(['ghp-import', 'output'], cwd=files_path).wait():
+    output = os.path.join(files_path, 'output')
+    if run_import(output, 'Initial commit'):
         raise RepoError("Can't import pages for ghp-import")
 
 
@@ -126,6 +130,36 @@ def github_remove_ssh_key(access_token, user, repo_name, key_id):
 
 
 def pelican_generate(files_path):
-    cmd = ['pelican', 'content', '-s', 'pelicanconf.py']
+    content_path = os.path.join(files_path, 'content')
+    conf_path = os.path.join(files_path, 'pelicanconf.py')
+    output_path = os.path.join(files_path, 'output')
+    theme = os.path.join(files_path, 'pelican-theme')
+    settings = read_settings(conf_path)
+
+    pelican = Pelican(
+        settings=settings,
+        path=content_path,
+        output_path=output_path,
+        theme=theme
+    )
+    pelican.run()
+
+
+def add_cname_file(files_path, domain):
+    cmd = ['echo', domain, '>', 'CNAME']
     if Popen(cmd, cwd=files_path).wait():
-        raise RepoError("Can't generate blog!")
+        raise RepoError("Can't add cname file in branch!")
+
+
+def git_change_branch(files_path, branch):
+    if Popen(['git', 'checkout', branch], cwd=files_path).wait():
+        raise RepoError("Can't change branch to {0}!".format(branch))
+
+
+def add_cname_in_branches(files_path, domain):
+    if domain is None:
+        return
+    add_cname_file(files_path, domain)
+    git_change_branch(files_path, 'gh-pages')
+    add_cname_file(files_path, domain)
+    git_change_branch(files_path, 'master')
