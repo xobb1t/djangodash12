@@ -4,7 +4,7 @@ from celery.task import task
 from django.conf import settings
 
 from repositories import utils as repo_utils
-from .utils import parse_blog_posts, create_pelikan_configs
+from .utils import parse_blog_posts, create_pelican_configs
 
 
 def exception_handle(func):
@@ -26,8 +26,8 @@ def work_on(process):
     repo = process.repo
 
     # Create pelican environemnt
+    create_pelican_configs(process)
     parse_blog_posts(process, settings.PARSE_PAGES_COUNT)
-    create_pelikan_configs(process)
 
     public_key_path = os.path.join(settings.KEYS_ROOT, 'id_rsa.pub')
     with open(public_key_path) as f:

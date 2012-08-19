@@ -1,0 +1,11 @@
+pelican==3.0
+    feedgenerator==1.2.1
+    Jinja2==2.6
+    Markdown==2.2.0
+    Pygments==1.5
+    docutils==0.9.1
+    pytz==2012d
+    blinker==1.2
+    Unidecode==0.04.9
+    argparse==1.2.1
+ghp-import==0.1.8

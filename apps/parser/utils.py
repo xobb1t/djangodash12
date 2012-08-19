@@ -2,12 +2,14 @@ import os
 import re
 import requests
 import slumber
+from shutil import copytree
+from StringIO import StringIO
 
 from datetime import datetime
 from django.conf import settings
 from django.template.loader import render_to_string
+
 from html2text import html2text as html2text_orig
-from StringIO import StringIO
 
 
 link_re = re.compile(r"https?://([^ \n]+\n)+[^ \n]+", re.MULTILINE)
@@ -95,13 +97,18 @@ def convert_blog_post(post, slug, file_path):
         f.write(result.encode('utf-8'))
 
 
-def create_pelikan_configs(process):
+def create_pelican_configs(process):
     blog = process.blog
     repo = process.repo
     if repo.cname:
         site_url = repo.cname
     else:
         site_url = '{0}.github.com/{1}'.format(repo.user.username, repo.name)
+    pelican_src = os.path.join(settings.PACKAGE_ROOT, 'pelican')
+    try:
+        copytree(pelican_src, process.path)
+    except OSError:
+        pass
     result = render_to_string('parser/pelicanconf.py_tpl', {
         'blog': blog, 'repo': repo, 'site_url': site_url
     })
@@ -115,5 +122,3 @@ def create_pelikan_configs(process):
     file_path = os.path.join(process.path, 'publishconf.py')
     with open(file_path, 'w') as f:
         f.write(result.encode('utf-8'))
-
-
