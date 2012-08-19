@@ -20,6 +20,7 @@ a {
   background: #868686;
   color: #fff;
 }
+
 /*layout*/
 .l-page { 
   position: relative;
@@ -43,10 +44,7 @@ a {
 }
 .l-page_index .l-container {
 }
-
 /*blocks*/
-
-
 .b-htext {
   position: absolute;
   bottom: 8px;
@@ -113,9 +111,8 @@ a {
   padding-top: 4px;
 }
 .b-sblog .b-sselect {
-  margin-bottom: 25px;
+  margin-bottom: 10px;
 }
-
 .b-sselect {
   margin-bottom: 15px;
 }
