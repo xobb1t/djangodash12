@@ -75,6 +75,7 @@ def create_pelican_instance(process):
 
 
 def convert_blog_posts(process, posts):
+    content_root = os.path.join(process.path, 'content')
     domain = process.blog.domain
     for post in posts:
         slug = get_post_slug(domain, post.get('url'))
