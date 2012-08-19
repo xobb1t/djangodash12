@@ -69,9 +69,8 @@ def create_pelican_instance(process):
         os.makedirs(content_root)
     except OSError:
         pass
-    pelican_src = os.path.join(settings.PACKAGE_ROOT, 'pelican', '*')
-    if Popen(['cp', '-r', pelican_src, process.path]).wait():
-        pass
+    pelican_src = os.path.join(settings.PACKAGE_ROOT, 'pelican')
+    Popen(['cp', '-r', '*', process.path], cwd=pelican_src).wait()
 
 
 def convert_blog_posts(process, posts):
