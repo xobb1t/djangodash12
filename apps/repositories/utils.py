@@ -120,3 +120,9 @@ def github_remove_ssh_key(access_token, user, repo_name, key_id):
     )
     if response.status_code != 204:
         raise RepoError("Can't remove ssh key!")
+
+
+def pelican_generate(files_path):
+    cmd = ['pelican', 'content', '-s', 'pelicanconf.py']
+    if Popen(cmd, cwd=files_path).wait():
+        raise RepoError("Can't generate blog!")
