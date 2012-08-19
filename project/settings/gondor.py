@@ -100,5 +100,6 @@ if "GONDOR_REDIS_URL" in os.environ:
 BLOGS_ROOT = os.path.join(DATA_DIR, 'blogs')
 KEYS_ROOT = os.path.join(DATA_DIR, 'keys')
 GIT_SSH = os.path.join(DATA_DIR, 'git_ssh.sh')
+
 os.environ.setdefault('KEYS_ROOT', KEYS_ROOT)
 os.environ.setdefault('GIT_SSH', GIT_SSH)
