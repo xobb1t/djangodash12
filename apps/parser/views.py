@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 
 from blogs.models import Blog
-from repo.models import Repo
+from repositories.models import Repo
 
 from .models import Process
 from .tasks import work_on
@@ -16,7 +16,7 @@ def start_import(request):
     repo = get_object_or_404(Repo, pk=repo_id)
 
     process, created = Process.objects.get_or_create(
-        blog=blog, process=process, defaults={
+        blog=blog, repo=repo, defaults={
             'stage': 1,
         }
     )

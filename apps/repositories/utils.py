@@ -76,9 +76,10 @@ def github_create_repo(access_token, repo_name):
         data=simplejson.dumps(post_data_dict),
         headers={'Accept': 'application/json'}
     )
-    response_dict = simplejson.loads(response_json.text)
-    if 'name' in response_dict:
+    if response_json.status_code != 201:
         raise RepoError("Don't create repo in github")
+
+    response_dict = simplejson.loads(response_json.content)
     return response_dict['ssh_url']
 
 
@@ -107,7 +108,7 @@ def git_remote_add(files_path, ssh_url):
 
 
 def git_push_origin(files_path):
-    if Popen(['git', 'push', '-u', 'origin'], cwd=files_path).wait():
+    if Popen(['git', 'push', '-u', 'origin', 'master'], cwd=files_path).wait():
         raise RepoError("Can't push into git remote repo!")
 
 
