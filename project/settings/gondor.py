@@ -1,4 +1,5 @@
 import os
+import redis
 import urlparse
 
 from random import choice
@@ -73,3 +74,24 @@ LOGGING = {
         },
     }
 }
+
+if "GONDOR_REDIS_URL" in os.environ:
+    urlparse.uses_netloc.append("redis")
+    url = urlparse.urlparse(os.environ["GONDOR_REDIS_URL"])
+
+    conn = redis.Redis(
+        host=url.hostname,
+        port=url.port,
+        password=url.password
+    )
+
+    BROKER_TRANSPORT = "redis"
+    BROKER_HOST = url.hostname
+    BROKER_PORT = url.port
+    BROKER_VHOST = "0"
+    BROKER_PASSWORD = url.password
+
+    CELERY_RESULT_BACKEND = "redis"
+    CELERY_REDIS_HOST = url.hostname
+    CELERY_REDIS_PORT = url.port
+    CELERY_REDIS_PASSWORD = url.password
