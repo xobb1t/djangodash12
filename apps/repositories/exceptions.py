@@ -12,3 +12,7 @@ class InitialCommitError(Exception):
 
 class GHPImportError(Exception):
     pass
+
+
+class GitHubCreateRepoError(Exception):
+    pass

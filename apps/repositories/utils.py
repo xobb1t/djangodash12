@@ -6,7 +6,7 @@ import simplejson
 from django.conf import settings
 
 from .exceptions import (CreateGitRepoError, AddFilesIntoRepoError,
-    InitialCommitError, GHPImportError)
+    InitialCommitError, GHPImportError, GitHubCreateRepoError)
 
 
 def get_access_data(code):
@@ -61,3 +61,20 @@ def git_initial_commit(files_path):
 def github_pages_import(files_path):
     if Popen(['ghp-import', 'output'], cwd=files_path).wait():
         raise GHPImportError("Can't import pages for ghp-import")
+
+
+def github_create_repo(access_token, repo_name):
+    post_data_dict = {
+        'name': repo_name,
+        'description': 'Static Pelican-powered blog',
+    }
+    response_json = requests.post(
+        '{0}/user/repos?access_token={1}'.format(
+            settings.GITHUB_API_HOST, access_token
+        ),
+        data=simplejson.dumps(post_data_dict),
+        headers={'Accept': 'application/json'}
+    )
+    response_dict = simplejson.loads(response_json.text)
+    if 'name' in response_dict:
+        raise GitHubCreateRepoError("Don't create repo in github")
