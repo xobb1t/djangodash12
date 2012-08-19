@@ -34,8 +34,8 @@
           </div>
         </div><!-- class="col col-c" -->
         <div class="col col-r">
-          <div class="help-text align-center disabled">
-            Authorize in <br><i>your GitHub</i><br>
+          <div class="help-text align-center">
+            Logged in as <br>LOGIN <br>
             <i class="arrow"></i>
           </div>
         </div><!-- class="col col-r" -->
@@ -43,18 +43,8 @@
       <section class="b-content clearfix">
         <div class="col col-l">
           <div class="align-center" id="js-save">
-            <form action="#?" data-action="/save/">
-              <span class="b-title">Import blog:</span>
-              <div class="b-sselect js-select">
-                <select name="blog">
-                  <option value="">Select blog for export</option>
-                  <option value="0">blog1.com</option>
-                  <option value="1">blog2.com</option>
-                  <option value="2">blog3.com</option>
-                </select>
-              </div>
-              <input type="submit" class="btn btn-inverse" value="Save">
-            </form>
+              <span class="b-title">Selected blog:</span>
+              <span class="b-btitle">Blog.com</span> <br>
           </div>
         </div><!-- class="col col-l" -->
         <div class="col col-c">
@@ -65,8 +55,20 @@
           </div>
         </div><!-- class="col col-c" -->
         <div class="col col-r">
-          <div class="align-center">
-            <a href="javascript:void(0)" class="b-icon b-icon_github js-popover disabled" id="js-github" data-original-title="GitHub.com" data-content="At the beginning login in blog platform"></a>
+          <div class="b-repo">
+            <form action="?#">
+              <div class="b-field clearfix">
+                <label>Repo name:</label>
+                <input type="text">
+              </div>
+              <div class="b-field clearfix">
+                <label>Domain:</label>
+                <input type="text">
+              </div>
+              <div class="align-center">
+                <input type="submit" class="btn btn-inverse" value="Save">
+              </div>
+            </form>
           </div>
         </div><!-- class="col col-r" -->
       </section>
