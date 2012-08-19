@@ -81,7 +81,27 @@ h4,
 h3,
 h2,
 h1 {
+  color: #2493b1;
   font-weight: 600;
+  font-family: 'Advent Pro', 'Arial', 'Helvetica CY', 'Nimbus Sans L', sans-serif;
+}
+h1 {
+  font-size: 30px;
+}
+h2 {
+  font-size: 23px;
+}
+h3 {
+  font-size: 20px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 14px;
 }
 abbr[title] {
   border-bottom: 1px dotted;
