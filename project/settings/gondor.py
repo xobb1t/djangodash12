@@ -95,3 +95,6 @@ if "GONDOR_REDIS_URL" in os.environ:
     CELERY_REDIS_HOST = url.hostname
     CELERY_REDIS_PORT = url.port
     CELERY_REDIS_PASSWORD = url.password
+
+
+BLOGS_ROOT = os.path.join(DATA_DIR, 'blogs')

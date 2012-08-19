@@ -186,3 +186,5 @@ BLOGGER_API_ROOT = 'https://www.googleapis.com/blogger/v3/'
 PARSE_PAGES_COUNT = 20
 
 djcelery.setup_loader()
+
+BLOGS_ROOT = os.path.join(PROJECT_ROOT, 'blogs')
