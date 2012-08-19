@@ -1,0 +1,44 @@
+/*base*/
+body {
+  background: #334443 url('../images/grid.png') repeat 0 0;
+}
+input,
+textarea,
+body {
+  color: #ddd;
+  font-size: 12px;
+  font-family: Tahoma, 'Geneva CY', sans-serif;
+}
+a {
+  color: #ddd;
+}
+::selection {
+  background: #868686;
+  color: #fff;
+}
+::-moz-selection {
+  background: #868686;
+  color: #fff;
+}
+
+/*layout*/
+.l-page { 
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto; 
+  min-height: 100%;
+  /*background-color: #ddd;*/
+  width: 960px;
+}
+.l-wrap {
+  height: 438px;
+}
+.l-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: -219px 0 0 -490px;
+  height: 438px;
+  width: 980px;
+}
+/*blocks*/
