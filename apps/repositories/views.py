@@ -66,7 +66,9 @@ def save_repo(request):
             name=name, cname=name
         )
         request.session['repo_id'] = repo.pk
-        return render(request, 'repositories/repository_saved.html')
+        return render(request, 'repositories/repository_saved.html', {
+            'repo': repo
+        })
 
     return render(request, 'repositories/repository_form.html', {
         'form': form,

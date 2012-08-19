@@ -1,1 +1,4 @@
-success
+<p>Repo name: <strong>{{ repo.name }}</strong></p>
+{% if repo.cname %}
+    <p>Domain: <strong>{{ repo.cname }}</strong></p>
+{% endif %}
