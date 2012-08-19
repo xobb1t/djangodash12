@@ -1,8 +1,9 @@
 from pelican import get_instance as get_pelican_instance
 from subprocess import Popen
 
-import requests
+import os
 import simplejson
+import requests
 
 from django.conf import settings
 
