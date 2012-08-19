@@ -92,7 +92,10 @@ def github_add_ssh_key(access_token, user, repo_name, ssh_key):
         '{0}/repos/{1}/{2}/keys?access_token={3}'.format(
             settings.GITHUB_API_HOST, user, repo_name, access_token
         ),
-        data=simplejson.dumps(post_data_dict),
+        data={
+            'title': 'key for push Pelican blog generator',
+            'key': ssh_key,
+        },
         headers={'Accept': 'application/json'}
     )
     response_dict = simplejson.loads(response_json.text)
@@ -120,3 +123,9 @@ def github_remove_ssh_key(access_token, user, repo_name, key_id):
     )
     if response.status_code != 204:
         raise RepoError("Can't remove ssh key!")
+
+
+def pelican_generate(files_path):
+    cmd = ['pelican', 'content', '-s', 'pelicanconf.py']
+    if Popen(cmd, cwd=files_path).wait():
+        raise RepoError("Can't generate blog!")

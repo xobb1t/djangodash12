@@ -1,8 +1,10 @@
 import os
+import stat
 from subprocess import Popen
 
 from django.conf import settings
 from django.core.management.base import BaseCommand
+from django.template.loader import render_to_string
 
 
 class Command(BaseCommand):
@@ -20,3 +22,7 @@ class Command(BaseCommand):
             Popen(
                 'ssh-keygen -q -N '' -t rsa -f {0}'.format(id_rsa).split(' ')
             ).wait()
+        git_ssh = settings.GIT_SSH
+        Popen(['chmod', '+rwx', git_ssh]).wait()
+        with open(git_ssh, 'w') as f:
+            f.write(render_to_string('git_ssh.sh_tpl', {}))
