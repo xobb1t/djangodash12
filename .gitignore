@@ -30,3 +30,4 @@ pip-log.txt
 project/site_media
 project/secret.txt
 project/sqlite3.db
+pelican-test
