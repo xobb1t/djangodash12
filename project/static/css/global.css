@@ -21,26 +21,11 @@ td {
 }
 article,
 aside,
-details,
-figcaption,
-figure,
 footer,
 header,
-hgroup,
 nav,
-section,
-summary {
+section {
   display: block;
-}
-audio,
-canvas,
-video {
-  display: inline-block;
-  *display: inline;
-  *zoom: 1;
-}
-audio:not([controls]) {
-  display: none;
 }
 [hidden] {
   display: none;
@@ -190,23 +175,6 @@ button[disabled],
 input[disabled] {
   cursor: default;
 }
-input[type="checkbox"],
-input[type="radio"] {
-  box-sizing: border-box;
-  padding: 0;
-  *height: 13px;
-  *width: 13px;
-}
-input[type="search"] {
-  -webkit-appearance: textfield;
-  -moz-box-sizing: content-box;
-  -webkit-box-sizing: content-box;
-  box-sizing: content-box;
-}
-input[type="search"]::-webkit-search-decoration,
-input[type="search"]::-webkit-search-cancel-button {
-  -webkit-appearance: none;
-}
 button::-moz-focus-inner,
 input::-moz-focus-inner {
   border: 0;
@@ -231,72 +199,3 @@ textarea {
 .clearfix:after {
   clear: both;
 }
-
-/*grid*/
-.row {
-  *zoom: 1;
-  width: 980px;
-}
-.row:before,
-.row:after {
-  display: table;
-  content: "";
-}
-
-.row:after {
-  clear: both;
-}
-[class*="span"] {
-  float: left;
-  margin-left: 20px;
-  width: 40px;
-}
-.span1 {
-  width: 40px;
-}
-.span2 {
-  width: 100px;
-}
-.span3 {
-  width: 160px;
-}
-.span4 {
-  width: 220px;
-}
-.span5 {
-  width: 280px;
-}
-.span6 {
-  width: 340px;
-}
-.span7 {
-  width: 400px;
-}
-.span8 {
-  width: 460px;
-}
-.span9 {
-  width: 520px;
-}
-.span10 {
-  width: 580px;
-}
-.span11 {
-  width: 640px;
-}
-.span12 {
-  width: 700px;
-}
-.span13 {
-  width: 760px;
-}
-.span14 {
-  width: 820px;
-}
-.span15 {
-  width: 880px;
-}
-.span16 {
-  width: 940px;
-}
-
