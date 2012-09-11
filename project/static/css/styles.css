@@ -404,8 +404,9 @@ a:hover {
     position: absolute;
     text-align: center;
     text-decoration: none;
-    width: 249px;
+    width: 430px;
     z-index: 20;
+    left: 25px;
 }
  .copy a {
     color: #999999;
