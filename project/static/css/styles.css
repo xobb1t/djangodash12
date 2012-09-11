@@ -25,10 +25,10 @@ a:hover {
 }
 
 /*layout*/
-.l-page { 
+.l-page {
   position: relative;
   overflow: hidden;
-  margin: 0 auto; 
+  margin: 0 auto;
   min-height: 100%;
 }
 .l-wrap {
@@ -69,7 +69,7 @@ a:hover {
 
 .b-text {
   font-size: 15px;
-  font-family: 'Advent Pro', Arial, Helvetica, sans-serif; 
+  font-family: 'Advent Pro', Arial, Helvetica, sans-serif;
 }
 
 .b-icon {
@@ -371,7 +371,7 @@ a:hover {
   border-right: 1px dashed #415857;
 }
 .cell-r {
-  border-left: 1px dashed #415857; 
+  border-left: 1px dashed #415857;
 }
 .cell:hover {
   background-color: rgba(41,41,41, 0.3);
@@ -396,4 +396,18 @@ a:hover {
 .b-text .listerror {
   padding-left: 10px;
   font-size: 16px;
+}
+ .copy {
+    bottom: 20px;
+    color: #999999;
+    display: block;
+    position: absolute;
+    text-align: center;
+    text-decoration: none;
+    width: 249px;
+    z-index: 20;
+}
+ .copy a {
+    color: #999999;
+    text-decoration: none;
 }
