@@ -23,7 +23,7 @@ class BlogForm(forms.Form):
         )
         if not blogs_data:
             return
-        for blog in blogs_data['items']:
+        for blog in blogs_data.get('items', []):
             choices += ((blog['id'], blog['name']),)
         self.fields['blog'].choices = choices
 
