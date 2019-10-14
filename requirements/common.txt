@@ -1,4 +1,4 @@
-Django==1.4.1
+Django==1.11.23
 South==0.7.6
 Pillow==1.7.7
 requests==0.13.6
