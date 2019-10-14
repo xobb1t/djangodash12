@@ -4,4 +4,4 @@ django-debug-toolbar==0.9.4
 ipython==0.13
 gondor==1.1.3
 django-devserver==0.3.2
-Werkzeug==0.8.3
+Werkzeug==0.15.3
