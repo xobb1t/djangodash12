@@ -1,5 +1,5 @@
 -r common.txt
 
-gunicorn==0.14.5
+gunicorn==19.5.0
 psycopg2==2.4.5
 eventlet==0.9.16
