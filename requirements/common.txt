@@ -1,6 +1,6 @@
 Django==1.4.1
 South==0.7.6
-Pillow==1.7.7
+Pillow==6.2.0
 requests==0.13.6
 simplejson==2.6.1
 slumber==0.4.2
