@@ -20,7 +20,7 @@ redis==2.4.9
 #PELICAN AND REQUIREMENTS
 pelican==3.0
     feedgenerator==1.2.1
-    Jinja2==2.6
+    Jinja2==2.11.3
     Markdown==2.2.0
     Pygments==1.5
     docutils==0.9.1
