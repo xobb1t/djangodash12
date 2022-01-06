@@ -6,7 +6,7 @@ simplejson==2.6.1
 slumber==0.4.2
 
 #CELERY AND REQUIREMENTS
-celery==2.3.3
+celery==5.2.2
     django-celery==2.3.3
     kombu==1.4.1
     django-kombu==0.9.4
